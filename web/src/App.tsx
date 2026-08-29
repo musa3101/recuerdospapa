@@ -3,7 +3,7 @@ import { LanguageProvider } from './i18n/LanguageContext';
 import { LanguageSelector } from './components/LanguageSelector';
 import { Hero } from './components/Hero';
 import { VideoSection } from './components/VideoSection';
-import { GalleryPlaceholder } from './components/GalleryPlaceholder';
+import { GalleryCarousel3D } from './components/GalleryCarousel3D';
 import { Timeline } from './components/Timeline';
 import { LetterSection } from './components/LetterSection';
 import { ClosingSection } from './components/ClosingSection';
@@ -24,10 +24,10 @@ export const App: React.FC = () => {
           {/* 2. Sección de Vídeo Vertical 9:16 */}
           <VideoSection />
 
-          {/* 3. Placeholder de Galería (Fase 1) */}
-          <GalleryPlaceholder />
+          {/* 3. Galería Interactiva 3D Carousel (CodePen Dudley Storey) */}
+          <GalleryCarousel3D />
 
-          {/* 4. Línea Temporal */}
+          {/* 4. Línea Temporal Vertical */}
           <Timeline />
 
           {/* 5. Carta / Dedicatoria */}

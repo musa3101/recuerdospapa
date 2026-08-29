@@ -6,22 +6,15 @@
  */
 
 export interface AssetsConfig {
-  // Toggle to true once Cloudflare R2 bucket/custom domain is ready
   useRemoteR2: boolean;
-  
-  // TODO: Replace with your actual Cloudflare R2 public URL or custom domain (e.g. 'https://media.tudominio.com')
   r2BaseUrl: string;
-  
-  // Local base path served from /public
   localBaseUrl: string;
 
-  // Media assets
   hero: {
     image: string;
     alt: string;
   };
   video: {
-    // TODO: When real vertical video (9:16) is available, point to its local file or R2 key
     src: string;
     poster: string;
     title: string;
@@ -36,14 +29,12 @@ export interface AssetsConfig {
     image: string;
     alt: string;
   };
-  // Future Cloudflare R2 Gallery config (for 50 - 200 family photos)
+  // 3D Carousel Gallery Photos
   gallery: {
-    // TODO: In Phase 2, define R2 folder prefix (e.g. 'gallery/papa-2026/')
-    r2Prefix: string;
-    samplePlaceholders: Array<{
+    items: Array<{
       id: string;
+      image: string;
       caption: string;
-      category: string;
     }>;
   };
 }
@@ -59,8 +50,7 @@ export const ASSETS: AssetsConfig = {
   },
 
   video: {
-    // Video placeholder or actual video file in /public/assets/video/
-    src: '', // Leave empty if waiting for video upload; fallback will show interactive poster preview
+    src: '',
     poster: '/assets/images/video-poster.jpg',
     title: 'Recuerdos y momentos inolvidables para papá',
   },
@@ -81,12 +71,15 @@ export const ASSETS: AssetsConfig = {
   },
 
   gallery: {
-    r2Prefix: 'gallery/',
-    samplePlaceholders: [
-      { id: '1', caption: 'Viajes y aventuras compartidas', category: 'Viajes' },
-      { id: '2', caption: 'Comidas y domingos en familia', category: 'Familia' },
-      { id: '3', caption: 'Risas, abrazos y celebraciones', category: 'Momentos' },
-      { id: '4', caption: 'Pequeños instantes del día a día', category: 'Cotidiano' },
+    items: [
+      { id: 'g-1', image: '/assets/images/gallery/gallery-1.jpg', caption: 'Sonrisas y momentos únicos' },
+      { id: 'g-2', image: '/assets/images/gallery/gallery-2.jpg', caption: 'Aventuras en familia' },
+      { id: 'g-3', image: '/assets/images/gallery/gallery-3.jpg', caption: 'Celebraciones y abrazos' },
+      { id: 'g-4', image: '/assets/images/gallery/gallery-4.jpg', caption: 'Recuerdos inolvidables' },
+      { id: 'g-5', image: '/assets/images/gallery/gallery-5.jpg', caption: 'Días de paseo y risas' },
+      { id: 'g-6', image: '/assets/images/gallery/gallery-6.jpg', caption: 'Historias compartidas' },
+      { id: 'g-7', image: '/assets/images/gallery/gallery-7.jpg', caption: 'La calidez de nuestro hogar' },
+      { id: 'g-8', image: '/assets/images/gallery/gallery-8.jpg', caption: 'Juntos en cada paso' },
     ],
   },
 };

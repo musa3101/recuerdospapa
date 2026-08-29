@@ -1,0 +1,220 @@
+.gallery-3d-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-3d-wrapper {
+  --carousel-radius: 220px;
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) 0;
+}
+
+@media (min-width: 480px) {
+  .carousel-3d-wrapper {
+    --carousel-radius: 260px;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-3d-wrapper {
+    --carousel-radius: 360px;
+  }
+}
+
+/* 3D Perspective Stage */
+.carousel-3d-stage {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  perspective: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .carousel-3d-stage {
+    height: 420px;
+    perspective: 1400px;
+  }
+}
+
+.carousel-3d-spinner {
+  position: absolute;
+  width: 170px;
+  height: 230px;
+  transform-style: preserve-3d;
+  transition: transform 0.85s var(--ease-organic);
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .carousel-3d-spinner {
+    width: 220px;
+    height: 300px;
+  }
+}
+
+.carousel-3d-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-box-reflect: below 12px linear-gradient(transparent, transparent 75%, rgba(0, 0, 0, 0.35));
+}
+
+.carousel-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.15);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.carousel-photo-frame:hover {
+  border-color: var(--accent-gold);
+  transform: scale(1.03);
+}
+
+.carousel-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  pointer-events: none;
+}
+
+.carousel-photo-glow {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* Floating Controls */
+.carousel-3d-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  background: rgba(28, 24, 20, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--border-radius-pill);
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-sm);
+}
+
+.carousel-ctrl-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.carousel-ctrl-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-gold-light);
+}
+
+.carousel-ctrl-btn:active {
+  transform: scale(0.92);
+}
+
+.carousel-ctrl-btn.auto-toggle.playing {
+  color: var(--accent-gold);
+}
+
+.carousel-swipe-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+}
+
+/* Lightbox Modal */
+.photo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 8, 7, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.photo-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.photo-modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.photo-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.photo-modal-close:hover {
+  background: rgba(200, 109, 81, 0.9);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
