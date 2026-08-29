@@ -170,7 +170,7 @@ a, button {
 
 .animate-blur-reveal {
   animation: blurReveal 1s var(--ease-organic) forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 /* Microinteractions (uipro-max) */
