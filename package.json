@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "build": "cd web && npm install && npm run build",
-    "deploy": "wrangler deploy"
+    "deploy": "cd web && npm run build && npx wrangler pages deploy dist --project-name=abdulhanif --branch=main --commit-dirty=true"
   }
 }
