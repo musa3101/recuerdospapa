@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Heart } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
 import { useLanguage } from '../i18n/LanguageContext';
 import './Hero.css';
@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
 
   return (
     <header className="hero-container" role="banner">
-      {/* Background Slideshow with Zoom-In & Zoom-Out transitions */}
+      {/* Background Slideshow with Gentle Ken Burns Zoom Transitions */}
       <div className="hero-slideshow-container">
         {heroImages.map((imgPath, index) => {
           const isCurrent = index === currentImageIndex;
@@ -57,28 +57,23 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
             />
           );
         })}
-        {/* Gradients: Subtle at top, darker at bottom to guarantee text legibility */}
+        {/* Gradients: Crystal clear on faces, atmospheric dark gradient at bottom */}
         <div className="hero-gradient-overlay" />
         <div className="hero-vignette" />
       </div>
 
-      {/* Hero Content Positioned Low to Give Maximum Priority to Family Faces */}
+      {/* Hero Content Positioned Low to Give Complete Priority to Family Faces */}
       <div className="hero-bottom-content">
-        <div className="hero-badge animate-blur-reveal" style={{ animationDelay: '0.1s' }}>
-          <Heart className="hero-badge-icon" size={13} />
-          <span>{t.hero.badge}</span>
-        </div>
-
-        <h1 className="hero-title animate-blur-reveal" style={{ animationDelay: '0.25s' }}>
+        <h1 className="hero-title animate-blur-reveal">
           {t.hero.title}
         </h1>
 
-        <p className="hero-subtitle animate-blur-reveal" style={{ animationDelay: '0.4s' }}>
+        <p className="hero-subtitle animate-blur-reveal" style={{ animationDelay: '0.15s' }}>
           {t.hero.subtitle}
         </p>
 
-        {/* Uiverse.io Inspired Animated Conic Border Button */}
-        <div className="hero-cta-wrapper animate-blur-reveal" style={{ animationDelay: '0.55s' }}>
+        {/* Uiverse.io Animated Conic Border Button Placed Further Down */}
+        <div className="hero-cta-wrapper animate-blur-reveal" style={{ animationDelay: '0.3s' }}>
           <button
             type="button"
             className="uiverse-conic-btn"
