@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, Heart } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -10,7 +10,22 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
   const { t } = useLanguage();
-  const heroImageUrl = resolveAssetUrl(ASSETS.hero.image);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const heroImages = (ASSETS.hero.images && ASSETS.hero.images.length > 0)
+    ? ASSETS.hero.images
+    : [ASSETS.hero.image];
+
+  // Cycle through background photos with Zoom In / Out transitions
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const handleScrollDown = () => {
     if (onStartClick) {
@@ -25,19 +40,30 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
 
   return (
     <header className="hero-container" role="banner">
-      {/* Background Image with Cinematic Overlay */}
-      <div
-        className="hero-background"
-        style={{ backgroundImage: `url(${heroImageUrl})` }}
-        role="img"
-        aria-label={ASSETS.hero.alt}
-      >
-        <div className="hero-overlay" />
+      {/* Background Slideshow with Zoom-In & Zoom-Out transitions */}
+      <div className="hero-slideshow-container">
+        {heroImages.map((imgPath, index) => {
+          const isCurrent = index === currentImageIndex;
+          const imageUrl = resolveAssetUrl(imgPath);
+          const isEven = index % 2 === 0;
+
+          return (
+            <div
+              key={imgPath}
+              className={`hero-slide ${isCurrent ? 'active' : ''} ${isEven ? 'zoom-in' : 'zoom-out'}`}
+              style={{ backgroundImage: `url(${imageUrl})` }}
+              role="img"
+              aria-label={ASSETS.hero.alt}
+            />
+          );
+        })}
+        {/* Gradients: Subtle at top, darker at bottom to guarantee text legibility */}
+        <div className="hero-gradient-overlay" />
         <div className="hero-vignette" />
       </div>
 
-      {/* Hero Content with Blur-Reveal Animation */}
-      <div className="hero-content">
+      {/* Hero Content Positioned Low to Give Maximum Priority to Family Faces */}
+      <div className="hero-bottom-content">
         <div className="hero-badge animate-blur-reveal" style={{ animationDelay: '0.1s' }}>
           <Heart className="hero-badge-icon" size={13} />
           <span>{t.hero.badge}</span>
@@ -51,25 +77,18 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
           {t.hero.subtitle}
         </p>
 
+        {/* Uiverse.io Inspired Animated Conic Border Button */}
         <div className="hero-cta-wrapper animate-blur-reveal" style={{ animationDelay: '0.55s' }}>
           <button
             type="button"
-            className="hero-cta-button"
+            className="uiverse-conic-btn"
             onClick={handleScrollDown}
             aria-label={t.hero.cta}
           >
-            <span>{t.hero.cta}</span>
-            <ChevronDown size={17} className="hero-cta-icon" />
+            <span className="uiverse-btn-text">{t.hero.cta}</span>
+            <ChevronDown size={18} className="uiverse-btn-icon" />
           </button>
         </div>
-      </div>
-
-      {/* Sutil Scroll Indicator */}
-      <div className="hero-scroll-indicator" onClick={handleScrollDown} aria-hidden="true">
-        <div className="scroll-indicator-mouse">
-          <div className="scroll-indicator-dot" />
-        </div>
-        <span className="scroll-indicator-text">{t.hero.scrollHint}</span>
       </div>
     </header>
   );

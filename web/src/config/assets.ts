@@ -11,6 +11,8 @@ export interface AssetsConfig {
   localBaseUrl: string;
 
   hero: {
+    // Array of photos to cycle through with Zoom-In / Zoom-Out effects
+    images: string[];
     image: string;
     alt: string;
   };
@@ -45,12 +47,18 @@ export const ASSETS: AssetsConfig = {
   localBaseUrl: '',
 
   hero: {
+    images: [
+      '/assets/images/hero-cover.jpg',
+      '/assets/images/timeline-1.jpg',
+      '/assets/images/gallery/gallery-2.jpg',
+      '/assets/images/gallery/gallery-5.jpg',
+    ],
     image: '/assets/images/hero-cover.jpg',
     alt: 'Fotografía familiar de portada para papá',
   },
 
   video: {
-    src: '',
+    src: '/assets/video/video_recuerdos_papa.mp4',
     poster: '/assets/images/video-poster.jpg',
     title: 'Recuerdos y momentos inolvidables para papá',
   },
