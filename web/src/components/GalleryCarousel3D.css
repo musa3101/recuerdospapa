@@ -37,12 +37,12 @@
 .carousel-3d-stage {
   position: relative;
   width: 100%;
-  height: 320px;
-  perspective: 1100px;
+  height: 400px;
+  perspective: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   cursor: grab;
 }
 
@@ -59,10 +59,10 @@
 
 .carousel-3d-spinner {
   position: absolute;
-  width: 170px;
-  height: 230px;
+  width: 210px;
+  height: 290px;
   transform-style: preserve-3d;
-  transition: transform 0.7s var(--ease-organic);
+  transition: transform 0.85s var(--ease-organic);
   will-change: transform;
 }
 
@@ -183,12 +183,12 @@
   margin-top: var(--space-sm);
 }
 
-/* Scrubber / Slider section */
+/* Scrubber / Slider section — hidden on mobile, visible on desktop */
 .gallery-scrubber-container {
   width: 90%;
   max-width: 500px;
   margin-top: var(--space-md);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
@@ -197,6 +197,12 @@
   padding: 0.75rem 1.25rem;
   border-radius: var(--border-radius-md);
   border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+@media (min-width: 768px) {
+  .gallery-scrubber-container {
+    display: flex;
+  }
 }
 
 .gallery-scrubber-info {

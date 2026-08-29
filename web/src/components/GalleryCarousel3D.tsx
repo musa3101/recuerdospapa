@@ -41,7 +41,7 @@ export const GalleryCarousel3D: React.FC = () => {
 
     autoPlayTimerRef.current = window.setInterval(() => {
       goToNext();
-    }, 4000);
+    }, 7000);
 
     return () => {
       if (autoPlayTimerRef.current !== null) window.clearInterval(autoPlayTimerRef.current);

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Play,
   Pause,
@@ -7,7 +7,9 @@ import {
   Maximize,
   Minimize,
   Film,
-  Sparkles
+  Sparkles,
+  SkipBack,
+  SkipForward
 } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -33,11 +35,15 @@ export const VideoSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<number | null>(null);
+  const lastTapRef = useRef<{ time: number; x: number }>({ time: 0, x: 0 });
+  const [skipIndicator, setSkipIndicator] = useState<'back' | 'forward' | null>(null);
+  const skipIndicatorTimeout = useRef<number | null>(null);
 
   const videoSrc = resolveAssetUrl(ASSETS.video.src);
   const posterUrl = resolveAssetUrl(ASSETS.video.poster);
 
-  const togglePlay = () => {
+  const togglePlay = useCallback((e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (!videoRef.current || !videoSrc) {
       setIsPlaying(!isPlaying);
       setHasStarted(true);
@@ -52,7 +58,52 @@ export const VideoSection: React.FC = () => {
       videoRef.current.pause();
       setIsPlaying(false);
     }
-  };
+  }, [isPlaying, videoSrc]);
+
+  const skipBy = useCallback((seconds: number) => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime = Math.max(
+      0,
+      Math.min(videoRef.current.duration, videoRef.current.currentTime + seconds)
+    );
+    setCurrentTime(videoRef.current.currentTime);
+
+    // Show skip indicator
+    const direction = seconds > 0 ? 'forward' : 'back';
+    setSkipIndicator(direction);
+    if (skipIndicatorTimeout.current !== null) window.clearTimeout(skipIndicatorTimeout.current);
+    skipIndicatorTimeout.current = window.setTimeout(() => setSkipIndicator(null), 600);
+  }, []);
+
+  const handleContainerClick = useCallback((e: React.MouseEvent) => {
+    // Don't toggle play if clicking on controls or buttons
+    const target = e.target as HTMLElement;
+    if (target.closest('.video-clean-controls-bar') || target.closest('.video-play-button')) return;
+    togglePlay();
+  }, [togglePlay]);
+
+  const handleDoubleTap = useCallback((e: React.TouchEvent) => {
+    const now = Date.now();
+    const touch = e.touches[0] || e.changedTouches[0];
+    const x = touch.clientX;
+    const timeDiff = now - lastTapRef.current.time;
+
+    if (timeDiff < 350 && timeDiff > 50) {
+      // Double tap detected
+      e.preventDefault();
+      const containerRect = containerRef.current?.getBoundingClientRect();
+      if (!containerRect) return;
+
+      const tapPosition = (x - containerRect.left) / containerRect.width;
+      if (tapPosition < 0.4) {
+        skipBy(-10);
+      } else if (tapPosition > 0.6) {
+        skipBy(10);
+      }
+    }
+
+    lastTapRef.current = { time: now, x };
+  }, [skipBy]);
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
@@ -148,8 +199,9 @@ export const VideoSection: React.FC = () => {
         <div
           ref={containerRef}
           className={`video-frame-container 9-16-aspect ${isFullscreen ? 'fullscreen' : ''}`}
-          onClick={togglePlay}
+          onClick={handleContainerClick}
           onMouseMove={resetControlsTimeout}
+          onTouchEnd={handleDoubleTap}
           onTouchStart={resetControlsTimeout}
         >
           {videoSrc ? (
@@ -198,16 +250,27 @@ export const VideoSection: React.FC = () => {
           )}
 
           {/* Clean Center Play Button Overlay */}
-          {(!isPlaying || !hasStarted) && (
+          {!isPlaying && (
             <div className="video-play-overlay">
               <button
                 type="button"
                 className="video-play-button"
-                onClick={togglePlay}
+                onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                 aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
               >
                 <Play size={30} className="play-icon" />
               </button>
+            </div>
+          )}
+
+          {/* Skip Indicator */}
+          {skipIndicator && (
+            <div className={`video-skip-indicator ${skipIndicator}`}>
+              {skipIndicator === 'back' ? (
+                <><SkipBack size={28} /><span>10s</span></>
+              ) : (
+                <><SkipForward size={28} /><span>10s</span></>
+              )}
             </div>
           )}
 
@@ -236,15 +299,33 @@ export const VideoSection: React.FC = () => {
 
               {/* Minimal Clean Action Row */}
               <div className="video-controls-actions">
-                {/* Left: Play/Pause, Time */}
+                {/* Left: Play/Pause, Skip, Time */}
                 <div className="video-left-actions">
                   <button
                     type="button"
                     className="video-action-btn primary-btn"
-                    onClick={togglePlay}
+                    onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                     aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
                   >
                     {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+
+                  <button
+                    type="button"
+                    className="video-action-btn"
+                    onClick={(e) => { e.stopPropagation(); skipBy(-10); }}
+                    aria-label="Retroceder 10 segundos"
+                  >
+                    <SkipBack size={16} />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="video-action-btn"
+                    onClick={(e) => { e.stopPropagation(); skipBy(10); }}
+                    aria-label="Adelantar 10 segundos"
+                  >
+                    <SkipForward size={16} />
                   </button>
 
                   <span className="video-time-display">
