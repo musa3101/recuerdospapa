@@ -4,8 +4,6 @@ import {
   Pause,
   Volume2,
   VolumeX,
-  RotateCcw,
-  RotateCw,
   Maximize,
   Minimize,
   Film,
@@ -47,8 +45,6 @@ export const VideoSection: React.FC = () => {
     }
 
     if (videoRef.current.paused) {
-      // Pause any ambient music if playing so sounds don't overlap
-      window.dispatchEvent(new CustomEvent('pause-ambient-music'));
       videoRef.current.play();
       setIsPlaying(true);
       setHasStarted(true);
@@ -78,15 +74,6 @@ export const VideoSection: React.FC = () => {
     }
   };
 
-  const skipTime = (seconds: number) => {
-    if (videoRef.current) {
-      const newTime = Math.min(Math.max(videoRef.current.currentTime + seconds, 0), duration || 9999);
-      videoRef.current.currentTime = newTime;
-      setCurrentTime(newTime);
-      resetControlsTimeout();
-    }
-  };
-
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (videoRef.current) {
@@ -106,11 +93,10 @@ export const VideoSection: React.FC = () => {
         if (containerRef.current.requestFullscreen) {
           await containerRef.current.requestFullscreen();
         } else if ((videoRef.current as any)?.webkitEnterFullscreen) {
-          // iOS Safari native video fullscreen
           (videoRef.current as any).webkitEnterFullscreen();
         }
         setIsFullscreen(true);
-      } catch (err) {
+      } catch {
         // Fallback
       }
     } else {
@@ -129,7 +115,7 @@ export const VideoSection: React.FC = () => {
     if (isPlaying) {
       controlsTimeoutRef.current = window.setTimeout(() => {
         setShowControls(false);
-      }, 3000);
+      }, 2500);
     }
   };
 
@@ -211,7 +197,7 @@ export const VideoSection: React.FC = () => {
             </div>
           )}
 
-          {/* Big Center Play Button overlay when paused/initial */}
+          {/* Clean Center Play Button Overlay */}
           {(!isPlaying || !hasStarted) && (
             <div className="video-play-overlay">
               <button
@@ -220,16 +206,15 @@ export const VideoSection: React.FC = () => {
                 onClick={togglePlay}
                 aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
               >
-                <Play size={28} className="play-icon" />
+                <Play size={30} className="play-icon" />
               </button>
-              <span className="video-tap-hint">{t.video.playHint}</span>
             </div>
           )}
 
-          {/* Complete Cinema Video Control Bar (Play/Pause, -10s, +10s, Timeline Scrubbing, Time, Volume, Fullscreen) */}
+          {/* Clean, Sleek Cinema Video Control Bar */}
           {hasStarted && (
             <div
-              className={`video-full-controls-bar ${showControls ? 'visible' : 'hidden'}`}
+              className={`video-clean-controls-bar ${showControls ? 'visible' : 'hidden'}`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Scrubbing Progress Bar */}
@@ -249,9 +234,9 @@ export const VideoSection: React.FC = () => {
                 />
               </div>
 
-              {/* Action Buttons Row */}
+              {/* Minimal Clean Action Row */}
               <div className="video-controls-actions">
-                {/* Left: Play/Pause, -10s, +10s, Time */}
+                {/* Left: Play/Pause, Time */}
                 <div className="video-left-actions">
                   <button
                     type="button"
@@ -259,29 +244,7 @@ export const VideoSection: React.FC = () => {
                     onClick={togglePlay}
                     aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
                   >
-                    {isPlaying ? <Pause size={17} /> : <Play size={17} />}
-                  </button>
-
-                  <button
-                    type="button"
-                    className="video-action-btn skip-btn"
-                    onClick={() => skipTime(-10)}
-                    title="Retroceder 10 segundos"
-                    aria-label="Retroceder 10 segundos"
-                  >
-                    <RotateCcw size={15} />
-                    <span className="skip-text">10</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="video-action-btn skip-btn"
-                    onClick={() => skipTime(10)}
-                    title="Avanzar 10 segundos"
-                    aria-label="Avanzar 10 segundos"
-                  >
-                    <RotateCw size={15} />
-                    <span className="skip-text">10</span>
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
                   </button>
 
                   <span className="video-time-display">
@@ -289,7 +252,7 @@ export const VideoSection: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Right: Mute, Fullscreen */}
+                {/* Right: Volume, Fullscreen */}
                 <div className="video-right-actions">
                   <button
                     type="button"

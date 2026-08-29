@@ -1,7 +1,6 @@
 import React from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { LanguageSelector } from './components/LanguageSelector';
-import { AmbientMusic } from './components/AmbientMusic';
 import { Hero } from './components/Hero';
 import { VideoSection } from './components/VideoSection';
 import { GalleryCarousel3D } from './components/GalleryCarousel3D';
@@ -17,15 +16,12 @@ export const App: React.FC = () => {
         {/* Floating Language Dropdown Selector */}
         <LanguageSelector />
 
-        {/* Floating Traditional Bengali Ambient Music Widget */}
-        <AmbientMusic />
-
         {/* 1. Hero Emocional */}
         <Hero />
 
         {/* Main Content Sections */}
         <main style={{ width: '100%' }}>
-          {/* 2. Sección de Vídeo Vertical 9:16 con Controles Completos */}
+          {/* 2. Sección de Vídeo Vertical 9:16 con Controles Cinemáticos */}
           <VideoSection />
 
           {/* 3. Galería Interactiva 3D Carousel (CodePen Dudley Storey) */}
@@ -34,7 +30,7 @@ export const App: React.FC = () => {
           {/* 4. Línea Temporal Vertical con 4 Etapas */}
           <Timeline />
 
-          {/* 5. Carta / Dedicatoria */}
+          {/* 5. Carta / Dedicatoria con Sobre Desplegable */}
           <LetterSection />
         </main>
 
