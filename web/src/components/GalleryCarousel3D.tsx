@@ -27,16 +27,16 @@ export const GalleryCarousel3D: React.FC = () => {
   // Auto-spin logic
   useEffect(() => {
     if (!isAutoPlaying) {
-      if (autoPlayTimerRef.current) clearInterval(autoPlayTimerRef.current);
+      if (autoPlayTimerRef.current !== null) window.clearInterval(autoPlayTimerRef.current);
       return;
     }
 
-    autoPlayTimerRef.current = setInterval(() => {
+    autoPlayTimerRef.current = window.setInterval(() => {
       rotateNext();
     }, 4200);
 
     return () => {
-      if (autoPlayTimerRef.current) clearInterval(autoPlayTimerRef.current);
+      if (autoPlayTimerRef.current !== null) window.clearInterval(autoPlayTimerRef.current);
     };
   }, [isAutoPlaying, rotateNext]);
 

@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2800);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
