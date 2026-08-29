@@ -36,27 +36,35 @@ export const translations: Record<Language, TranslationSchema> = {
       events: [
         {
           id: 'milestone-1',
-          yearOrDate: 'Los primeros pasos',
-          title: 'Nuestros primeros recuerdos juntos',
+          yearOrDate: 'Los primeros sobrinos',
+          title: 'Disfrutando con la nueva generación',
           description:
-            'Desde que tenemos memoria, siempre has estado ahí para guiarnos con paciencia, enseñarnos a descubrir el mundo y regalarnos tus mejores sonrisas.',
-          tag: 'Comienzos',
+            'La inmensa alegría de ver crecer a la familia y compartir momentos entrañables de ternura y cariño con los primeros sobrinos.',
+          tag: 'Familia',
         },
         {
           id: 'milestone-2',
-          yearOrDate: 'Aventuras y viajes',
-          title: 'Los viajes que nunca olvidaremos',
+          yearOrDate: 'Etapa militar y de servicio',
+          title: 'Años de trabajo, disciplina y honor',
           description:
-            'Cada escapada, cada carretera recorrida y cada risa en el coche. Gracias por llenar nuestra infancia y juventud de anécdotas inolvidables.',
-          tag: 'Aventuras',
+            'Tu etapa de servicio y esfuerzo incansable como trabajador y militar. Un ejemplo de constancia y rectitud que nos llena de orgullo.',
+          tag: 'Honor',
         },
         {
           id: 'milestone-3',
-          yearOrDate: 'Siempre a nuestro lado',
-          title: 'Apoyo incondicional en cada etapa',
+          yearOrDate: 'Celebración de Eid Mubarak',
+          title: 'Unión y alegría familiar',
           description:
-            'En los momentos grandes y en los pequeños detalles del día a día, saber que contamos contigo es el mayor regalo que podemos tener.',
-          tag: 'Gratitud',
+            'Días de bendición, abrazos y sonrisas compartidas, celebrando las tradiciones y la felicidad de estar todos juntos.',
+          tag: 'Eid Mubarak',
+        },
+        {
+          id: 'milestone-4',
+          yearOrDate: 'Celebrando tu cumpleaños',
+          title: 'Un homenaje de amor y gratitud',
+          description:
+            'Un día inolvidable celebrando tu vida, rodeado del cariño más sincero de toda tu familia que te admira y te quiere.',
+          tag: 'Cumpleaños',
         },
       ],
     },
@@ -116,27 +124,35 @@ export const translations: Record<Language, TranslationSchema> = {
       events: [
         {
           id: 'milestone-1',
-          yearOrDate: 'The Early Days',
-          title: 'Our First Memories Together',
+          yearOrDate: 'The First Nieces & Nephews',
+          title: 'Joy with the New Generation',
           description:
-            'For as long as we can remember, you have always been there to guide us with patience, teach us the world, and share your warmest smiles.',
-          tag: 'Beginnings',
+            'The pure joy of watching our family grow, sharing warm and unforgettable smiles with the very first nieces and nephews.',
+          tag: 'Family',
         },
         {
           id: 'milestone-2',
-          yearOrDate: 'Adventures & Trips',
-          title: 'Unforgettable Journeys',
+          yearOrDate: 'Years of Military Service',
+          title: 'Dedication, Discipline & Honor',
           description:
-            'Every road trip, every holiday, and every laugh shared along the way. Thank you for filling our lives with unforgettable stories.',
-          tag: 'Adventures',
+            'Your honorable service in the military and your tireless work ethic. A true model of integrity and devotion that inspires us every single day.',
+          tag: 'Honor',
         },
         {
           id: 'milestone-3',
-          yearOrDate: 'Always By Our Side',
-          title: 'Unconditional Love & Support',
+          yearOrDate: 'Eid Mubarak Celebrations',
+          title: 'Family Unity & Festive Blessings',
           description:
-            'In life’s greatest milestones and in the simple daily moments, knowing we have you is the greatest blessing of all.',
-          tag: 'Gratitude',
+            'Sacred holiday moments filled with blessings, warm embraces, and joyful memories gathered together as one united family.',
+          tag: 'Eid Mubarak',
+        },
+        {
+          id: 'milestone-4',
+          yearOrDate: 'Celebrating Your Birthday',
+          title: 'A Tribute of Boundless Love',
+          description:
+            'A deeply special day celebrating your life, surrounded by the warmth, admiration, and endless love of everyone in the family.',
+          tag: 'Birthday',
         },
       ],
     },
@@ -196,27 +212,35 @@ export const translations: Record<Language, TranslationSchema> = {
       events: [
         {
           id: 'milestone-1',
-          yearOrDate: 'প্রথম দিনগুলো',
-          title: 'একসাথে আমাদের প্রথম স্মৃতি',
+          yearOrDate: 'নতুন প্রজন্মের আগমন',
+          title: 'প্রথম ভাগ্নে-ভাগ্নিদের সাথে আনন্দঘন সময়',
           description:
-            'ছোটবেলা থেকেই তুমি ধৈর্যের সাথে আমাদের হাত ধরে পথ চলতে শিখিয়েছো, পৃথিবী চিনিয়েছো এবং মুখে সবসময় হাসি ফুটিয়েছো।',
-          tag: 'শুরু',
+            'পরিবারে নতুন সদস্যদের আগমন ও তোমার মুখের সেই নির্মল হাসি। তাদের স্নেহ ও ভালোবাসায় জড়িয়ে রাখার সুন্দর মুহূর্ত।',
+          tag: 'পরিবার',
         },
         {
           id: 'milestone-2',
-          yearOrDate: 'ভ্রমণ ও অভিযান',
-          title: 'ভুলতে না পারা চমৎকার ভ্রমণগুলো',
+          yearOrDate: 'সামরিক জীবন ও কর্মনিষ্ঠা',
+          title: 'শৃঙ্খলা, আত্মত্যাগ ও সম্মান',
           description:
-            'প্রতিটি আনন্দঘন যাত্রা, গাড়িতে সবার সাথে হাসাহাসি আর ছুটির দিনগুলো। আমাদের জীবন সুন্দর স্মৃতিতে ভরিয়ে দেওয়ার জন্য ধন্যবাদ।',
-          tag: 'অভিযান',
+            'সামরিক বাহিনীতে নিষ্ঠার সাথে দেশসেবা ও কঠোর পরিশ্রমের দিনগুলো। তোমার এই ত্যাগ ও সততা আমাদের আজীবন অনুপ্রাণিত করে।',
+          tag: 'সম্মান',
         },
         {
           id: 'milestone-3',
-          yearOrDate: 'সর্বদা পাশে',
-          title: 'প্রতি পদক্ষেপে তোমার অটুট সমর্থন',
+          yearOrDate: 'ঈদের আনন্দঘন মুহূর্ত',
+          title: 'পারিবারিক ঐক্য ও উৎসবের আনন্দ',
           description:
-            'জীবনের প্রতিটি গুরুত্বপূর্ণ সময় এবং দৈনন্দিন ছোট ছোট মুহূর্তে তোমাকে পাশে পাওয়া আমাদের জীবনের সেরা উপহার।',
-          tag: 'কৃতজ্ঞতা',
+            'পবিত্র ঈদের দিনে পরিবারের সবাইকে সাথে নিয়ে কাটানো বরকতময় ও স্মৃতিময় কিছু সুন্দর মুহূর্ত।',
+          tag: 'ঈদ মোবারক',
+        },
+        {
+          id: 'milestone-4',
+          yearOrDate: 'জন্মদিনের বিশেষ উদযাপন',
+          title: 'ভালোবাসা ও শ্রদ্ধায় ঘেরা দিন',
+          description:
+            'তোমার জন্মদিন উপলক্ষে পরিবারের সবার একত্র হয়ে ভালোবাসা ও সম্মান জানানোর এক অনন্য ও স্মরণীয় দিন।',
+          tag: 'শুভ জন্মদিন',
         },
       ],
     },

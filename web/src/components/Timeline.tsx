@@ -8,6 +8,7 @@ const TIMELINE_IMAGES: Record<string, string> = {
   'milestone-1': resolveAssetUrl(ASSETS.timeline.event1),
   'milestone-2': resolveAssetUrl(ASSETS.timeline.event2),
   'milestone-3': resolveAssetUrl(ASSETS.timeline.event3),
+  'milestone-4': resolveAssetUrl(ASSETS.timeline.event4),
 };
 
 export const Timeline: React.FC = () => {

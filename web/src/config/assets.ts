@@ -11,7 +11,6 @@ export interface AssetsConfig {
   localBaseUrl: string;
 
   hero: {
-    // 5 Photos from "hero fotos" folder with Zoom In / Zoom Out effect
     images: string[];
     image: string;
     alt: string;
@@ -22,7 +21,10 @@ export interface AssetsConfig {
     title: string;
   };
   timeline: {
-    [key: string]: string;
+    event1: string;
+    event2: string;
+    event3: string;
+    event4: string;
   };
   letter: {
     backgroundTexture?: string;
@@ -31,7 +33,6 @@ export interface AssetsConfig {
     image: string;
     alt: string;
   };
-  // 3D Carousel Gallery Photos
   gallery: {
     items: Array<{
       id: string;
@@ -65,9 +66,10 @@ export const ASSETS: AssetsConfig = {
   },
 
   timeline: {
-    event1: '/assets/images/timeline-1.jpg',
-    event2: '/assets/images/timeline-2.jpg',
-    event3: '/assets/images/timeline-3.jpg',
+    event1: '/assets/images/timeline/timeline-1.jpg',
+    event2: '/assets/images/timeline/timeline-2.jpg',
+    event3: '/assets/images/timeline/timeline-3.jpg',
+    event4: '/assets/images/timeline/timeline-4.jpg',
   },
 
   letter: {
