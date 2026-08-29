@@ -11,7 +11,7 @@ export interface AssetsConfig {
   localBaseUrl: string;
 
   hero: {
-    // Array of photos to cycle through with Zoom-In / Zoom-Out effects
+    // 5 Photos from "hero fotos" folder with Zoom In / Zoom Out effect
     images: string[];
     image: string;
     alt: string;
@@ -48,12 +48,13 @@ export const ASSETS: AssetsConfig = {
 
   hero: {
     images: [
-      '/assets/images/hero-cover.jpg',
-      '/assets/images/timeline-1.jpg',
-      '/assets/images/gallery/gallery-2.jpg',
-      '/assets/images/gallery/gallery-5.jpg',
+      '/assets/images/hero/hero-1.jpg',
+      '/assets/images/hero/hero-2.jpg',
+      '/assets/images/hero/hero-3.jpg',
+      '/assets/images/hero/hero-4.jpg',
+      '/assets/images/hero/hero-5.jpg',
     ],
-    image: '/assets/images/hero-cover.jpg',
+    image: '/assets/images/hero/hero-1.jpg',
     alt: 'Fotografía familiar de portada para papá',
   },
 

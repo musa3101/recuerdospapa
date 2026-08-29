@@ -26,7 +26,7 @@
   background-size: cover;
   background-position: center 25%; /* Keeps faces centered in top-middle area */
   opacity: 0;
-  transition: opacity 1.8s ease-in-out;
+  transition: opacity 1s ease-in-out;
   will-change: transform, opacity;
 }
 
@@ -40,26 +40,26 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 }
 
 /* Zoom-Out Animation */
 @keyframes kenBurnsZoomOut {
   0% {
-    transform: scale(1.12);
+    transform: scale(1.09);
   }
   100% {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 }
 
 .hero-slide.zoom-in.active {
-  animation: kenBurnsZoomIn 8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: kenBurnsZoomIn 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .hero-slide.zoom-out.active {
-  animation: kenBurnsZoomOut 8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: kenBurnsZoomOut 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* Gradient Overlay: Transparent on faces (0% - 40%), deep gradient at bottom (60% - 100%) */
