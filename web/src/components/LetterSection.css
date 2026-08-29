@@ -3,6 +3,30 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background: linear-gradient(
+    180deg,
+    #110F0D 0%,
+    #161210 15%,
+    #1A1510 40%,
+    #1A1510 60%,
+    #161210 85%,
+    #110F0D 100%
+  );
+  position: relative;
+}
+
+/* Warm golden ambient radial glow behind the envelope */
+.letter-section::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .letter-interactive-container {
@@ -21,7 +45,7 @@
   position: relative;
   width: 100%;
   max-width: 500px;
-  height: 330px;
+  height: clamp(270px, 72vw, 350px);
   background-color: #e5d5b7;
   background-image: 
     radial-gradient(ellipse at center, rgba(255, 250, 235, 0.4) 0%, rgba(200, 175, 135, 0.6) 100%),
@@ -40,15 +64,9 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 2.2rem;
+  padding-bottom: 2rem;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
   user-select: none;
-}
-
-@media (min-width: 480px) {
-  .envelope-sealed-card {
-    height: 350px;
-  }
 }
 
 .envelope-sealed-card:hover {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -11,20 +11,38 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
   const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const isVisibleRef = useRef<boolean>(true);
 
   const heroImages = (ASSETS.hero.images && ASSETS.hero.images.length > 0)
     ? ASSETS.hero.images
     : [ASSETS.hero.image];
 
-  // Cycle through background photos with Zoom In / Out transitions
+  // Pause slideshow when hero is scrolled out of viewport or tab is hidden
   useEffect(() => {
     if (heroImages.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 3500);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => clearInterval(interval);
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    const interval = setInterval(() => {
+      if (isVisibleRef.current && !document.hidden) {
+        setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      }
+    }, 4000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
   }, [heroImages.length]);
 
   const handleScrollDown = () => {
@@ -32,14 +50,14 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
       onStartClick();
       return;
     }
-    const target = document.getElementById('video-section');
+    const target = document.getElementById('galeria');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <header className="hero-container" role="banner">
+    <header ref={heroRef} className="hero-container" role="banner">
       {/* Background Slideshow with Gentle Ken Burns Zoom Transitions */}
       <div className="hero-slideshow-container">
         {heroImages.map((imgPath, index) => {

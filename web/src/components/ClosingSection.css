@@ -1,81 +1,73 @@
 .closing-section {
   position: relative;
   width: 100%;
-  min-height: 85vh;
-  min-height: 85dvh;
+  min-height: 95vh;
+  min-height: 95dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* Position all typography at the bottom like a luxury footer */
   align-items: center;
   text-align: center;
-  padding: var(--space-2xl) var(--space-md) calc(var(--sab) + var(--space-2xl));
+  padding: var(--space-xl) var(--space-md) calc(var(--sab) + var(--space-xl));
   overflow: hidden;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
 }
 
-/* Background image: Bright, clear, family photo fully visible */
+/* Background image: Clear, vivid family photo */
 .closing-background {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 35%;
+  background-position: center 25%; /* Keep faces centered and clear in the top 2/3 */
   z-index: 1;
-  filter: brightness(0.9) contrast(1.05);
+  filter: brightness(0.95) contrast(1.03);
   transition: transform 10s ease-out;
 }
 
 .closing-section:hover .closing-background {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
-/* Subtle Vignette & Light Ambient Overlay (Leaves background photo very clear) */
+/* Cinematic Atmospheric Gradient: Clear on faces (0% to 45%), deepening at bottom (55% to 100%) */
 .closing-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(ellipse at center, rgba(17, 15, 13, 0.25) 0%, rgba(17, 15, 13, 0.75) 100%),
-    linear-gradient(180deg, var(--bg-primary) 0%, transparent 20%, transparent 80%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(17, 15, 13, 0.05) 15%,
+    rgba(17, 15, 13, 0.1) 45%,
+    rgba(17, 15, 13, 0.7) 68%,
+    rgba(17, 15, 13, 0.95) 88%,
+    var(--bg-primary) 100%
+  );
   z-index: 2;
 }
 
-/* Glassmorphic Container for Crisp Text & Clear Background Visibility */
+/* Floating Bottom Content - No box covering faces */
 .closing-content {
   position: relative;
   z-index: 3;
-  width: 90%;
-  max-width: 620px;
+  width: 100%;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(18, 14, 11, 0.58);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  padding: var(--space-xl) var(--space-lg);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.65),
-    0 0 30px rgba(212, 175, 55, 0.15),
-    inset 0 0 25px rgba(255, 255, 255, 0.05);
-}
-
-@media (min-width: 600px) {
-  .closing-content {
-    padding: var(--space-2xl) var(--space-xl);
-  }
+  padding: 0 var(--space-sm);
+  margin-top: auto;
 }
 
 .closing-heart-badge {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #c85336, #802613);
-  border: 2px solid rgba(244, 231, 181, 0.5);
+  border: 2px solid rgba(244, 231, 181, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 25px rgba(200, 83, 54, 0.4);
+  margin-bottom: var(--space-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 25px rgba(200, 83, 54, 0.4);
 }
 
 .closing-heart-icon {
@@ -84,29 +76,29 @@
   animation: pulseGlow 2.2s ease-in-out infinite;
 }
 
-/* Headline: Cinzel / Playfair Luxury Display */
+/* Headline: Cinzel / Luxury Display */
 .closing-title {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 6.5vw, 3.2rem);
+  font-size: clamp(2rem, 6.5vw, 3rem);
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 0, 0, 0.8);
   letter-spacing: 0.02em;
 }
 
-/* Subtitle: Exquisite Calligraphic Handwriting Script (Alex Brush / Great Vibes) */
+/* Subtitle: Exquisite Calligraphic Handwriting Script (Alex Brush) */
 .closing-final-words {
   font-family: var(--font-script);
   font-size: clamp(2.8rem, 8vw, 4.2rem);
   font-weight: 400;
   color: var(--accent-gold-light);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   line-height: 1.1;
   text-shadow: 
-    0 2px 10px rgba(0, 0, 0, 0.9),
-    0 0 25px rgba(212, 175, 55, 0.45);
+    0 3px 15px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(212, 175, 55, 0.5);
   transform: rotate(-1.5deg);
 }
 
@@ -115,16 +107,19 @@
   align-items: center;
   gap: 0.45rem;
   font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(248, 245, 238, 0.85);
-  margin-bottom: var(--space-lg);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.25rem 0.85rem;
+  color: var(--accent-gold-light);
+  margin-bottom: var(--space-md);
+  background: rgba(20, 16, 12, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.3rem 0.95rem;
   border-radius: var(--border-radius-pill);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .closing-sparkle-icon {
@@ -137,27 +132,27 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(14, 11, 9, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(18, 14, 11, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 175, 55, 0.4);
-  padding: 0.45rem 1.25rem;
+  padding: 0.5rem 1.35rem;
   border-radius: var(--border-radius-pill);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
-  margin-top: var(--space-xs);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 20px rgba(212, 175, 55, 0.2);
+  margin-top: 0.25rem;
   transition: all var(--transition-fast);
 }
 
 .closing-made-by-musa:hover {
   border-color: var(--accent-gold);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 175, 55, 0.35);
 }
 
 .made-by-text {
   font-family: var(--font-sans);
   font-size: 0.86rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--text-primary);
 }

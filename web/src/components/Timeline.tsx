@@ -75,6 +75,7 @@ export const Timeline: React.FC = () => {
                       alt={event.title}
                       className="timeline-portrait-img"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="timeline-frame-overlay" />
                   </div>

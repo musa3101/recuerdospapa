@@ -655,3 +655,16 @@ export function resolveAssetUrl(pathOrKey: string): string {
   }
   return pathOrKey;
 }
+
+/**
+ * Helper to resolve the optimized thumbnail URL for gallery images
+ */
+export function resolveThumbUrl(pathOrKey: string): string {
+  if (!pathOrKey) return '';
+  if (pathOrKey.includes('/assets/images/gallery/') && !pathOrKey.includes('/thumbs/')) {
+    const thumbPath = pathOrKey.replace('/assets/images/gallery/', '/assets/images/gallery/thumbs/');
+    return resolveAssetUrl(thumbPath);
+  }
+  return resolveAssetUrl(pathOrKey);
+}
+

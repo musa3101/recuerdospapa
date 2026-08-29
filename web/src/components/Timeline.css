@@ -3,6 +3,27 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background: linear-gradient(
+    180deg,
+    #110F0D 0%,
+    #14120F 15%,
+    #171513 50%,
+    #14120F 85%,
+    #110F0D 100%
+  );
+  position: relative;
+}
+
+/* Ambient golden line separator at the top */
+.timeline-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
 }
 
 .timeline-vertical-flow {
@@ -45,7 +66,7 @@
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  gap: var(--space-md);
+  gap: clamp(0.65rem, 3vw, var(--space-md));
   padding-left: 0;
 }
 
@@ -60,8 +81,8 @@
 }
 
 .timeline-step-circle {
-  width: 48px;
-  height: 48px;
+  width: clamp(40px, 11vw, 48px);
+  height: clamp(40px, 11vw, 48px);
   border-radius: 50%;
   background: var(--bg-card);
   border: 2px solid var(--accent-gold);

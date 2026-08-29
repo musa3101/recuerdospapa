@@ -1,13 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Globe, ChevronDown, Check } from 'lucide-react';
+import { ChevronDown, Check } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/types';
 import './LanguageSelector.css';
 
-const LANGUAGES: Array<{ code: Language; label: string; name: string }> = [
-  { code: 'es', label: 'ES', name: 'Español' },
-  { code: 'en', label: 'EN', name: 'English' },
-  { code: 'bn', label: 'বাংলা', name: 'বাংলা (Bangla)' },
+interface LangOption {
+  code: Language;
+  flag: string;
+  shortLabel: string;
+  name: string;
+}
+
+const LANGUAGES: LangOption[] = [
+  { code: 'es', flag: '🇪🇸', shortLabel: 'ES', name: 'Español' },
+  { code: 'en', flag: '🇬🇧', shortLabel: 'EN', name: 'English' },
+  { code: 'bn', flag: '🇧🇩', shortLabel: 'BN', name: 'বাংলা' },
 ];
 
 export const LanguageSelector: React.FC = () => {
@@ -40,7 +47,7 @@ export const LanguageSelector: React.FC = () => {
 
   return (
     <div className="lang-dropdown-wrapper" ref={dropdownRef}>
-      {/* Compact Main Trigger Button */}
+      {/* Compact Main Trigger Button with Flag */}
       <button
         type="button"
         className={`lang-trigger-btn ${isOpen ? 'open' : ''}`}
@@ -49,12 +56,12 @@ export const LanguageSelector: React.FC = () => {
         aria-haspopup="listbox"
         aria-label="Seleccionar idioma"
       >
-        <Globe size={15} className="lang-globe-icon" aria-hidden="true" />
-        <span className="lang-current-code">{currentLang.label}</span>
-        <ChevronDown size={14} className={`lang-chevron ${isOpen ? 'rotated' : ''}`} aria-hidden="true" />
+        <span className="lang-flag-emoji" aria-hidden="true">{currentLang.flag}</span>
+        <span className="lang-current-code">{currentLang.shortLabel}</span>
+        <ChevronDown size={13} className={`lang-chevron ${isOpen ? 'rotated' : ''}`} aria-hidden="true" />
       </button>
 
-      {/* Dropdown Menu */}
+      {/* Compact Luxury Dropdown Menu */}
       {isOpen && (
         <ul className="lang-dropdown-menu" role="listbox" aria-label="Idiomas disponibles">
           {LANGUAGES.map((lang) => {
@@ -67,9 +74,9 @@ export const LanguageSelector: React.FC = () => {
                 className={`lang-dropdown-item ${isSelected ? 'selected' : ''}`}
                 onClick={() => handleSelect(lang.code)}
               >
-                <span className="lang-item-badge">{lang.label}</span>
+                <span className="lang-item-flag" aria-hidden="true">{lang.flag}</span>
                 <span className="lang-item-name">{lang.name}</span>
-                {isSelected && <Check size={14} className="lang-check-icon" />}
+                {isSelected && <Check size={13} className="lang-check-icon" />}
               </li>
             );
           })}

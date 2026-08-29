@@ -3,6 +3,27 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background: linear-gradient(
+    180deg,
+    #110F0D 0%,
+    #151210 20%,
+    #181410 50%,
+    #151210 80%,
+    #110F0D 100%
+  );
+  position: relative;
+}
+
+/* Subtle golden ambient glow at the top of the section */
+.video-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
 }
 
 .video-player-outer {

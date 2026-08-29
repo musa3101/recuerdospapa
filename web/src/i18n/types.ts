@@ -27,6 +27,10 @@ export interface TranslationSchema {
     cardText: string;
     chipCount: string;
     chipQuality: string;
+    swipeHint: string;
+    viewAll: string;
+    allPhotos: string;
+    photoOf: string; // e.g. "Foto {current} de {total}"
   };
   timeline: {
     tag: string;
@@ -46,6 +50,7 @@ export interface TranslationSchema {
     subtitle: string;
     openPrompt: string;
     closePrompt: string;
+    forDad: string;
     salutation: string;
     paragraphs: string[];
     closing: string;

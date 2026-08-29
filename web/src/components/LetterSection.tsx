@@ -46,13 +46,15 @@ export const LetterSection: React.FC = () => {
                   src="/assets/images/red_wax_seal.jpg"
                   alt="Sello de cera rojo"
                   className="wax-seal-real-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
 
             {/* Envelope Text & Hint */}
             <div className="envelope-front-body">
-              <span className="envelope-for-text">Para papá</span>
+              <span className="envelope-for-text">{t.letter.forDad}</span>
               <div className="envelope-open-hint">
                 <Sparkles size={14} className="hint-sparkle" />
                 <span>{t.letter.openPrompt}</span>
@@ -68,6 +70,8 @@ export const LetterSection: React.FC = () => {
                 src="/assets/images/red_wax_seal.jpg"
                 alt="Sello"
                 className="letter-seal-mini-img"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

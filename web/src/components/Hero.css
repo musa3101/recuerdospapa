@@ -99,7 +99,7 @@
 /* Luxury Editorial Typography for "Para papá" */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 11vw, 5.5rem);
+  font-size: clamp(2.7rem, 10vw, 5.5rem);
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.05;
@@ -181,9 +181,9 @@
   -webkit-mask-clip: var(--m-o);
   mask-composite: exclude;
   -webkit-mask-composite: destination-out;
-  filter: hue-rotate(0);
-  animation: rotate-hue linear 1800ms infinite;
+  animation: rotate-conic-border 3s linear infinite;
   box-sizing: border-box;
+  will-change: transform;
 }
 
 .uiverse-conic-btn:hover {
@@ -192,12 +192,15 @@
 }
 
 .uiverse-conic-btn:hover::after {
-  animation: rotate-hue linear 600ms infinite;
+  animation-duration: 1.5s;
 }
 
-@keyframes rotate-hue {
-  to {
-    filter: hue-rotate(1turn);
+@keyframes rotate-conic-border {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
   }
 }
 
