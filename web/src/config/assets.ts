@@ -20,6 +20,11 @@ export interface AssetsConfig {
     poster: string;
     title: string;
   };
+  ambientMusic: {
+    // Optional MP3 path (e.g. '/assets/audio/bengali_flute.mp3')
+    src: string;
+    title: string;
+  };
   timeline: {
     event1: string;
     event2: string;
@@ -63,6 +68,11 @@ export const ASSETS: AssetsConfig = {
     src: '/assets/video/video_recuerdos_papa.mp4',
     poster: '/assets/images/video-poster.jpg',
     title: 'Recuerdos y momentos inolvidables para papá',
+  },
+
+  ambientMusic: {
+    src: '/assets/audio/bengali_ambient.mp3',
+    title: 'Melodía tradicional de Bengala (Flauta & Sitar)',
   },
 
   timeline: {
