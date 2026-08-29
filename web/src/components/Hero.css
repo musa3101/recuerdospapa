@@ -1,0 +1,178 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: calc(var(--sat) + var(--space-xl)) var(--space-md) calc(var(--sab) + var(--space-xl));
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 35%;
+  transform: scale(1.03);
+  transition: transform 12s var(--ease-organic);
+  z-index: 1;
+}
+
+.hero-container:hover .hero-background {
+  transform: scale(1.07);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 15, 13, 0.45) 0%,
+    rgba(17, 15, 13, 0.68) 45%,
+    rgba(17, 15, 13, 0.94) 88%,
+    var(--bg-primary) 100%
+  );
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.75);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-sm);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(212, 175, 55, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: var(--accent-gold-light);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--border-radius-pill);
+  margin-bottom: var(--space-md);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.hero-badge-icon {
+  color: var(--accent-terracotta);
+  fill: var(--accent-terracotta);
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 12vw, 5.4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.05;
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 0 50px rgba(212, 175, 55, 0.25);
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: var(--space-xl);
+  line-height: 1.55;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero-cta-wrapper {
+  margin-top: var(--space-xs);
+}
+
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #D4AF37 0%, #B8972E 100%);
+  color: #110F0D;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 1rem 2.4rem;
+  border-radius: var(--border-radius-pill);
+  border: none;
+  box-shadow: 0 8px 26px rgba(212, 175, 55, 0.38), 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.hero-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(212, 175, 55, 0.55), 0 4px 8px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #E0BF4E 0%, #C4A235 100%);
+}
+
+.hero-cta-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}
+
+.hero-cta-icon {
+  animation: subtleFloat 2s ease-in-out infinite;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: calc(var(--sab) + var(--space-md));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.75;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.hero-scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator-mouse {
+  width: 22px;
+  height: 34px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-indicator-dot {
+  width: 3.5px;
+  height: 6px;
+  background-color: var(--accent-gold);
+  border-radius: 2px;
+  margin-top: 5px;
+  animation: subtleFloat 1.8s ease-in-out infinite;
+}
+
+.scroll-indicator-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}

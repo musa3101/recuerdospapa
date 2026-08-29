@@ -1,0 +1,74 @@
+:root {
+  /* Colors - HSL & Hex Deep Warm Palette (uipro-max) */
+  --bg-primary: #110F0D;
+  --bg-secondary: #181512;
+  --bg-card: #201C18;
+  --bg-card-hover: #29241F;
+  --bg-glass: rgba(28, 24, 20, 0.75);
+
+  /* Parchment & Letter Colors */
+  --bg-letter: #FBF8F2;
+  --bg-letter-alt: #F4ECE0;
+  --text-letter-main: #2C251F;
+  --text-letter-muted: #6C5F53;
+  --border-letter: #E5DAC9;
+
+  /* Text & Foreground */
+  --text-primary: #F8F5EE;
+  --text-secondary: #C8BDAF;
+  --text-muted: #968B7E;
+  --text-on-accent: #110F0D;
+
+  /* Accents & Warmth */
+  --accent-gold: #D4AF37;
+  --accent-gold-light: #F4E7B5;
+  --accent-gold-dim: rgba(212, 175, 55, 0.16);
+  --accent-gold-glow: rgba(212, 175, 55, 0.28);
+  --accent-terracotta: #C86D51;
+  --accent-terracotta-dim: rgba(200, 109, 81, 0.16);
+  --border-subtle: rgba(248, 245, 238, 0.08);
+  --border-medium: rgba(248, 245, 238, 0.15);
+
+  /* Shadows & Glows (uipro-max) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-letter: 0 16px 40px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.12);
+  --glow-warm: 0 0 35px var(--accent-gold-glow);
+
+  /* Typography (gpt-taste) */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Max-width for optimal reading rhythm (gpt-taste: 65ch) */
+  --max-prose-width: 65ch;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5.5rem;
+
+  /* Layout */
+  --max-width-mobile: 480px;
+  --max-width-content: 720px;
+  --max-width-wide: 1040px;
+  --border-radius-sm: 10px;
+  --border-radius-md: 18px;
+  --border-radius-lg: 28px;
+  --border-radius-pill: 9999px;
+
+  /* Safe Area Insets for Mobile */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Motion Curves (motion-design) */
+  --ease-organic: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s var(--ease-organic);
+  --transition-smooth: 0.45s var(--ease-organic);
+  --transition-slow: 0.85s var(--ease-organic);
+}

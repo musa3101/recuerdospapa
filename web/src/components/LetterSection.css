@@ -1,0 +1,117 @@
+.letter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter-paper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-letter);
+  color: var(--text-letter-main);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  margin: var(--space-md) auto 0;
+  box-shadow: var(--shadow-letter);
+  border: 1px solid var(--border-letter);
+  background-image: radial-gradient(#ece3d2 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@media (min-width: 768px) {
+  .letter-paper {
+    padding: var(--space-xl) var(--space-lg) var(--space-xl);
+  }
+}
+
+.letter-seal {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A84931 0%, #85331E 100%);
+  border: 2px solid #D69785;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(168, 73, 49, 0.45);
+  z-index: 2;
+}
+
+.seal-heart {
+  color: #FBF8F1;
+  fill: #FBF8F1;
+}
+
+.letter-inner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.letter-salutation {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text-letter-main);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+
+.letter-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.letter-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-letter-main);
+  font-weight: 400;
+}
+
+.letter-footer {
+  position: relative;
+  border-top: 1px solid rgba(103, 91, 80, 0.15);
+  padding-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.letter-closing-line {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-letter-muted);
+  margin-bottom: 0.35rem;
+}
+
+.letter-signature-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-signature {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #A84931;
+}
+
+.letter-date-place {
+  font-size: 0.82rem;
+  color: var(--text-letter-muted);
+  margin-top: 0.2rem;
+}
+
+.letter-feather-icon {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  color: rgba(168, 73, 49, 0.35);
+}
