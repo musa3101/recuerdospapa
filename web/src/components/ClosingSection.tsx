@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, Sparkles } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
 import { useLanguage } from '../i18n/LanguageContext';
 import './ClosingSection.css';
@@ -34,7 +34,14 @@ export const ClosingSection: React.FC = () => {
         </p>
 
         <div className="closing-subtle-family">
+          <Sparkles size={11} className="closing-sparkle-icon" />
           <span>{t.closing.family}</span>
+        </div>
+
+        {/* Dedicated Personalized Footer Credit for Musa */}
+        <div className="closing-made-by-musa">
+          <span className="made-by-text">{t.closing.madeBy}</span>
+          <Heart size={14} className="made-by-heart" aria-hidden="true" />
         </div>
       </div>
     </footer>

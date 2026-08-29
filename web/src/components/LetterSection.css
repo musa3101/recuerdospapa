@@ -2,17 +2,134 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
+.letter-interactive-container {
+  width: 100%;
+  max-width: 620px;
+  margin: var(--space-md) auto 0;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* ============================================================================
+ * State 1: Sealed Vintage Luxury Envelope
+ * ============================================================================ */
+.envelope-sealed-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 280px;
+  background: linear-gradient(135deg, #2a241e 0%, #1e1915 100%);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.15);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.envelope-sealed-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-gold);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), 0 0 45px rgba(212, 175, 55, 0.3);
+}
+
+.envelope-top-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, #383028 0%, #241e19 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  z-index: 1;
+}
+
+.envelope-center-seal {
+  position: relative;
+  z-index: 3;
+  margin-top: -10px;
+}
+
+.wax-seal-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #c85336, #802613);
+  border: 2.5px solid #e29b87;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 83, 54, 0.5);
+  transition: transform var(--transition-fast);
+}
+
+.envelope-sealed-card:hover .wax-seal-badge {
+  transform: scale(1.1);
+}
+
+.wax-seal-heart {
+  color: #fbf8f1;
+  fill: #fbf8f1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.envelope-front-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.envelope-for-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-gold-light);
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.envelope-open-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--border-radius-pill);
+  border: 1px solid var(--border-subtle);
+  letter-spacing: 0.05em;
+}
+
+.hint-sparkle {
+  color: var(--accent-gold);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ============================================================================
+ * State 2: Unfolded Parchment Paper Letter
+ * ============================================================================ */
 .letter-paper {
   position: relative;
   width: 100%;
-  max-width: 600px;
   background: var(--bg-letter);
   color: var(--text-letter-main);
   border-radius: var(--border-radius-md);
   padding: var(--space-xl) var(--space-md) var(--space-lg);
-  margin: var(--space-md) auto 0;
   box-shadow: var(--shadow-letter);
   border: 1px solid var(--border-letter);
   background-image: radial-gradient(#ece3d2 1px, transparent 1px);
@@ -21,8 +138,23 @@
 
 @media (min-width: 768px) {
   .letter-paper {
-    padding: var(--space-xl) var(--space-lg) var(--space-xl);
+    padding: var(--space-2xl) var(--space-xl) var(--space-xl);
   }
+}
+
+@keyframes letterUnfold {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-letter-unfold {
+  animation: letterUnfold 0.65s var(--ease-organic) forwards;
 }
 
 .letter-seal {
@@ -30,21 +162,21 @@
   top: -18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #A84931 0%, #85331E 100%);
-  border: 2px solid #D69785;
+  background: linear-gradient(135deg, #a84931 0%, #85331e 100%);
+  border: 2px solid #d69785;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(168, 73, 49, 0.45);
+  box-shadow: 0 4px 14px rgba(168, 73, 49, 0.5);
   z-index: 2;
 }
 
 .seal-heart {
-  color: #FBF8F1;
-  fill: #FBF8F1;
+  color: #fbf8f1;
+  fill: #fbf8f1;
 }
 
 .letter-inner-content {
@@ -53,9 +185,9 @@
 }
 
 .letter-salutation {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
   color: var(--text-letter-main);
   margin-bottom: var(--space-md);
   letter-spacing: -0.01em;
@@ -70,14 +202,14 @@
 
 .letter-paragraph {
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--text-letter-main);
   font-weight: 400;
 }
 
 .letter-footer {
   position: relative;
-  border-top: 1px solid rgba(103, 91, 80, 0.15);
+  border-top: 1px solid rgba(103, 91, 80, 0.18);
   padding-top: var(--space-md);
   display: flex;
   flex-direction: column;
@@ -97,14 +229,14 @@
 }
 
 .letter-signature {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #A84931;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #a84931;
 }
 
 .letter-date-place {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--text-letter-muted);
   margin-top: 0.2rem;
 }
@@ -112,6 +244,32 @@
 .letter-feather-icon {
   position: absolute;
   right: 0;
-  bottom: 4px;
+  bottom: 8px;
   color: rgba(168, 73, 49, 0.35);
+}
+
+.letter-fold-action {
+  margin-top: var(--space-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.letter-fold-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-letter-muted);
+  background: rgba(103, 91, 80, 0.08);
+  border: 1px solid rgba(103, 91, 80, 0.2);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--border-radius-pill);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.letter-fold-btn:hover {
+  background: rgba(103, 91, 80, 0.15);
+  color: var(--text-letter-main);
 }

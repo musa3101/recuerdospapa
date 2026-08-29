@@ -4,10 +4,10 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/types';
 import './LanguageSelector.css';
 
-const LANGUAGES: Array<{ code: Language; label: string; name: string; flag: string }> = [
-  { code: 'es', label: 'ES', name: 'Español', flag: '🇪🇸' },
-  { code: 'en', label: 'EN', name: 'English', flag: '🇬🇧' },
-  { code: 'bn', label: 'BN', name: 'বাংলা (Bangla)', flag: '🇧🇩' },
+const LANGUAGES: Array<{ code: Language; label: string; name: string }> = [
+  { code: 'es', label: 'ES', name: 'Español' },
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'bn', label: 'বাংলা', name: 'বাংলা (Bangla)' },
 ];
 
 export const LanguageSelector: React.FC = () => {
@@ -67,7 +67,7 @@ export const LanguageSelector: React.FC = () => {
                 className={`lang-dropdown-item ${isSelected ? 'selected' : ''}`}
                 onClick={() => handleSelect(lang.code)}
               >
-                <span className="lang-item-flag">{lang.flag}</span>
+                <span className="lang-item-badge">{lang.label}</span>
                 <span className="lang-item-name">{lang.name}</span>
                 {isSelected && <Check size={14} className="lang-check-icon" />}
               </li>

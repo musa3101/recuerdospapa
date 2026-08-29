@@ -44,6 +44,8 @@ export interface TranslationSchema {
     tag: string;
     title: string;
     subtitle: string;
+    openPrompt: string;
+    closePrompt: string;
     salutation: string;
     paragraphs: string[];
     closing: string;
@@ -54,5 +56,6 @@ export interface TranslationSchema {
     title: string;
     finalWords: string;
     family: string;
+    madeBy: string;
   };
 }

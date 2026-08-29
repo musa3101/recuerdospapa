@@ -72,6 +72,8 @@ export const translations: Record<Language, TranslationSchema> = {
       tag: 'Dedicatoria',
       title: 'Una carta para ti',
       subtitle: 'Palabras sinceras desde el corazón',
+      openPrompt: 'Toca para abrir la carta',
+      closePrompt: 'Plegar carta',
       salutation: 'Querido papá,',
       paragraphs: [
         'Si estás leyendo esto mientras disfrutas de tu café o té con esta taza, queremos que recuerdes cada día lo profundamente importante que eres para nosotros.',
@@ -86,6 +88,7 @@ export const translations: Record<Language, TranslationSchema> = {
       title: 'Gracias por todos los recuerdos.',
       finalWords: 'Te queremos, papá.',
       family: 'SIEMPRE JUNTOS',
+      madeBy: 'Hecho por Musa con amor',
     },
   },
 
@@ -160,6 +163,8 @@ export const translations: Record<Language, TranslationSchema> = {
       tag: 'Dedication',
       title: 'A Letter for You',
       subtitle: 'Heartfelt words from the depth of our hearts',
+      openPrompt: 'Tap to open the letter',
+      closePrompt: 'Fold letter',
       salutation: 'Dearest Dad,',
       paragraphs: [
         'If you are reading this while enjoying your morning cup with this special mug, we want you to always remember how deeply meaningful you are to all of us.',
@@ -174,6 +179,7 @@ export const translations: Record<Language, TranslationSchema> = {
       title: 'Thank you for every beautiful memory.',
       finalWords: 'We love you, Dad.',
       family: 'FOREVER TOGETHER',
+      madeBy: 'Made by Musa with love',
     },
   },
 
@@ -248,6 +254,8 @@ export const translations: Record<Language, TranslationSchema> = {
       tag: 'শ্রদ্ধাঞ্জলি',
       title: 'তোমার জন্য একটি চিঠি',
       subtitle: 'হৃদয়ের গভীর থেকে ভালোবাসার কয়েকটি কথা',
+      openPrompt: 'চিঠিটি খুলতে চাপুন',
+      closePrompt: 'চিঠি বন্ধ করুন',
       salutation: 'শ্রদ্ধেয় বাবা,',
       paragraphs: [
         'এই বিশেষ মগে চা বা কফি পান করার সময় আমরা চাই তুমি প্রতি মুহূর্তে অনুভব করো যে তুমি আমাদের জন্য কতটা মূল্যবান ও প্রিয়।',
@@ -262,6 +270,7 @@ export const translations: Record<Language, TranslationSchema> = {
       title: 'সব সুন্দর স্মৃতির জন্য অশেষ ধন্যবাদ।',
       finalWords: 'বাবা, আমরা তোমাকে অনেক ভালোবাসি।',
       family: 'চিরকাল একসাথে',
+      madeBy: 'মুসা কর্তৃক ভালোবাসায় তৈরি',
     },
   },
 };
