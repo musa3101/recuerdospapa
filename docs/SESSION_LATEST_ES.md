@@ -4,41 +4,40 @@
 29 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical, soporte multilingüe completo (Español, Inglés y Bengalí), y ajuste del ritmo de las fotos del Hero a 3.5 segundos con fundido cruzado suave y cinematográfico.
+Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical con las 4 etapas reales familiares, soporte multilingüe completo (Español, Inglés y Bengalí) y sincronización git.
 
 ---
 
 ## 🛠️ Qué se ha hecho
-1. **Calibración de Ritmo y Animación del Hero**:
-   - Ajustado el tiempo de permanencia de cada foto a **3.5 segundos** para un visionado más cómodo y relajado.
-   - Suavizado el fundido cruzado (*crossfade*) a **1.4 segundos** con curva `cubic-bezier(0.4, 0, 0.2, 1)`, eliminando cualquier salto brusco.
-   - Calibrado el efecto Ken Burns (Zoom-In / Zoom-Out) a un deslizamiento sutil y continuo de escala del 1.0 al 1.06 a lo largo de 7 segundos con centro fijado en los rostros (`transform-origin: center 25%`).
+1. **Actualización de la Cronología con las 4 Etapas Reales (`cronologia`)**:
+   - **Etapa 01 (`1.JPG`)**: *Los primeros sobrinos* — Disfrutando con la nueva generación y compartiendo con los sobrinos de la hermana mayor.
+   - **Etapa 02 (`2.JPG`)**: *Etapa militar y de servicio* — Años de disciplina, entrega y honor en el ejército.
+   - **Etapa 03 (`3.jpg`)**: *Celebración de Eid Mubarak* — Unión familiar, bendiciones y alegría en las festividades.
+   - **Etapa 04 (`4.JPG`)**: *Celebrando tu cumpleaños* — Homenaje de amor, respeto y gratitud en su último cumpleaños.
+   - Fotos optimizadas en vertical (4:5) y textos localizados en **Español**, **Inglés** y **Bengalí**.
 
-2. **Fotos Personalizadas del Hero (`hero fotos`)**:
-   - Conectadas las 5 fotos seleccionadas de la carpeta `hero fotos`.
+2. **Hero Cinematográfico**:
+   - 5 fotos del Hero conectadas con fundido suave (*crossfade* de 1.4s) y efecto Ken Burns lento de 3.5s.
+   - Botón interactivo animado de Uiverse.io y texto anclado abajo para dar prioridad a los rostros.
 
-3. **Galería 3D Carousel Interactiva (`GalleryCarousel3D.tsx`)**:
-   - Carrusel 3D con perspectiva CSS real, soporte táctil (swipe), controles de giro, lightbox y reflejos.
+3. **Galería 3D Carousel Interactiva**:
+   - Perspectiva CSS 3D, swipe táctil para móviles, controles y modal lightbox.
 
-4. **Cronología Vertical Narrativa**:
-   - Flujo vertical continuo con nodos numerados `01`, `02`, `03` y fotografías verticales 4:5.
-
-5. **Internacionalización Completa (i18nstack)**:
-   - Español (ES), Inglés (EN) y Bengalí (বাংলা) con selector flotante y tipografías nativas.
+4. **Internacionalización y Git**:
+   - Selector multilingüe (ES, EN, BN) y rama `dev` limpia y actualizada.
 
 ---
 
 ## 📁 Archivos Modificados / Creados
-- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
-- `web/src/config/assets.ts`
-- `web/src/components/GalleryCarousel3D.tsx`, `web/src/components/GalleryCarousel3D.css`
 - `web/src/components/Timeline.tsx`, `web/src/components/Timeline.css`
-- `web/src/i18n/types.ts`, `web/src/i18n/translations.ts`, `web/src/i18n/LanguageContext.tsx`
-- `web/src/components/LanguageSelector.tsx`, `web/src/components/LanguageSelector.css`
+- `web/public/assets/images/timeline/` (4 fotos: `timeline-1.jpg` a `timeline-4.jpg`)
+- `web/src/config/assets.ts`
+- `web/src/i18n/translations.ts`
+- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
+- `web/src/components/GalleryCarousel3D.tsx`
 - `setup.sh`, `docs/SESSION_LATEST_ES.md`, `docs/ROADMAP.md`
 
 ---
 
 ## 📌 Queda Pendiente
-- Conectar las imágenes de la carpeta `cronologia` y el vídeo final `fotos para video/video_final_recuerdos_papa.mp4`.
 - Despliegue en Cloudflare Pages / R2.
