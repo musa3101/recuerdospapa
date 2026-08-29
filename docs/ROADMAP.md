@@ -1,6 +1,7 @@
 # Roadmap del Proyecto: Web de Recuerdos "Para papá"
 
 ## ✅ Tareas Completadas
+- [x] **Resolución definitiva de cuelgue en iPhone/Safari**: Eliminado el desbordamiento de memoria GPU WebKit originado por `will-change: filter`.
 - [x] **Auto-despliegue CI/CD automático**: Flujo con GitHub Actions y Cloudflare Git que compila y despliega en Cloudflare Pages en cada `git push` a `main`.
 - [x] **Blindaje Móvil (iOS/Android)**: `ErrorBoundary`, rutas absolutas (`base: '/'`), `target: 'es2020'` y compatibilidad GPU en Safari.
 - [x] **Solución a caché de iPhone / Safari**: Inclusión de directivas `_headers` para entrega inmediata de `index.html` actualizado.
@@ -16,12 +17,13 @@
 - [x] **Selector de idiomas flotante**: Banderas reales (🇪🇸, 🇬🇧, 🇧🇩) y menú compacto tipo glassmorphism.
 - [x] **Localización completa (`i18nstack`)**: Traducciones culturales y adaptativas en Español, Inglés y Bengalí.
 - [x] **Full Responsive (iPhone y Android)**: Unidades `100dvh`, `clamp()`, `env(safe-area-inset)` y rendimiento a 60/120 fps.
+- [x] **Validación y Funcionamiento Móvil Verificado**: Comprobado en dispositivos móviles reales (iOS / iPhone y Android).
 - [x] **Despliegue oficial en Cloudflare Pages**: `https://abdulhanif.pages.dev`.
 
 ---
 
 ## ⏳ Tareas en Progreso
-- [ ] Validación final por la familia en dispositivos móviles reales (iOS y Android).
+- Ninguna tarea activa pendiente. Proyecto finalizado y verificado.
 
 ---
 
