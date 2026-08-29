@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Heart, Feather, Sparkles, ChevronUp } from 'lucide-react';
+import { Mail, Sparkles, ChevronUp, Feather } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import './LetterSection.css';
 
@@ -23,7 +23,7 @@ export const LetterSection: React.FC = () => {
       </div>
 
       <div className="letter-interactive-container">
-        {/* State 1: Sealed Envelope */}
+        {/* State 1: Realistic Vintage Sealed Envelope */}
         {!isOpen ? (
           <div
             className="envelope-sealed-card"
@@ -33,15 +33,24 @@ export const LetterSection: React.FC = () => {
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsOpen(true)}
             aria-label={t.letter.openPrompt}
           >
-            {/* Envelope Flap Structure */}
+            {/* Envelope Paper Seams & Flaps */}
             <div className="envelope-top-flap" />
+            <div className="envelope-left-flap" />
+            <div className="envelope-right-flap" />
+            <div className="envelope-bottom-flap" />
 
+            {/* Realistic Red Wax Seal */}
             <div className="envelope-center-seal">
-              <div className="wax-seal-badge">
-                <Heart size={22} className="wax-seal-heart" />
+              <div className="wax-seal-img-wrapper">
+                <img
+                  src="/assets/images/red_wax_seal.jpg"
+                  alt="Sello de cera rojo"
+                  className="wax-seal-real-img"
+                />
               </div>
             </div>
 
+            {/* Envelope Text & Hint */}
             <div className="envelope-front-body">
               <span className="envelope-for-text">Para papá</span>
               <div className="envelope-open-hint">
@@ -53,9 +62,13 @@ export const LetterSection: React.FC = () => {
         ) : (
           /* State 2: Unfolded Parchment Letter */
           <div className="letter-paper animate-letter-unfold">
-            {/* Wax Seal Stamp on Top of the Letter */}
-            <div className="letter-seal" aria-hidden="true">
-              <Heart size={18} className="seal-heart" />
+            {/* Wax Seal Stamp on Top of the Unfolded Letter */}
+            <div className="letter-seal-header" aria-hidden="true">
+              <img
+                src="/assets/images/red_wax_seal.jpg"
+                alt="Sello"
+                className="letter-seal-mini-img"
+              />
             </div>
 
             <div className="letter-inner-content">

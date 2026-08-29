@@ -4,48 +4,37 @@
 29 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del reproductor de vídeo limpio y cinematográfico (con barra de progreso scrubber dorada, play/pause, tiempo, volumen y fullscreen), eliminación de widgets innecesarios, carta interactiva con sobre desplegable, galería 3D, cronología vertical y soporte multilingüe completo.
+Ampliación de la galería de recuerdos (109 fotos), gestos táctiles móviles, rediseño fotorrealista del sobre vintage con sello de cera y optimización del cierre final para visibilidad nítida de la fotografía de fondo y tipografía caligráfica de lujo.
 
 ---
 
 ## 🛠️ Qué se ha hecho
-1. **Limpieza y Pulido del Reproductor de Vídeo (`VideoSection.tsx`)**:
-   - Eliminados los botones de retroceso/avance rápido de 10s que recargaban visualmente la interfaz.
-   - Eliminadas etiquetas o textos superpuestos en el póster.
-   - Diseño limpio y minimalista de la barra de control:
-     - Botón principal Play/Pausa dorado.
-     - Barra de progreso interactiva (scrubber) con gradiente dorado.
-     - Contador de tiempo (`00:00 / 03:12`).
-     - Botón de Silencio/Sonido.
-     - Botón de Pantalla Completa (*fullscreen*).
-   - Ocultación automática suave de controles durante la reproducción.
+1. **Visibilidad Nítida de la Foto de Fondo y Tarjeta de Cristal (`ClosingSection.css`)**:
+   - Ajustada la superposición de gradiente para que la fotografía familiar del fondo sea 100% clara, brillante y emotiva.
+   - Enmarcado el mensaje en un contenedor de cristal esmerilado translúcido (`backdrop-filter: blur(14px)`) con bordes dorados, garantizando máxima legibilidad de los textos sin tapar la imagen.
 
-2. **Eliminación del Reproductor de Música Flotante**:
-   - Retirado el widget inferior de música ambiental de fondo para mantener una experiencia limpia y sin elementos invasivos.
+2. **Tipografía Caligráfica y Tipografías de Lujo (`Alex Brush`, `Cinzel`, `Outfit`)**:
+   - Incorporadas fuentes de Google Fonts: `Alex Brush` / `Great Vibes` para subtítulos caligráficos hechos a mano (*"Te queremos, papá."*).
+   - Ajustada la tipografía del título a `Cinzel` / `Playfair Display` para lograr un acabado regio, limpio y refinado.
 
-3. **Carta / Dedicatoria Interactiva con Sobre Desplegable (`LetterSection.tsx`)**:
-   - Sobre vintage sellado con lacre de corazón y texto "Para papá" con invitación a abrir.
-   - Al tocarlo, el sobre se abre y despliega la carta en papel pergamino con tipografía cuidada.
+3. **Rediseño Fotorrealista de la Carta y Sobre (`LetterSection.tsx`, `LetterSection.css`)**:
+   - Sobre de pergamino vintage con solapas tridimensionales y sello de cera rojo 3D en relieve (`/assets/images/red_wax_seal.jpg`).
 
-4. **Pie de Página Personalizado (`ClosingSection.tsx`)**:
-   - Añadido el crédito especial: **`Hecho por Musa con amor ❤️`** (con traducciones en inglés y bengalí).
-
-5. **Iconografía y Tipografía**:
-   - Tipografía editorial `Cormorant Garamond`.
-   - Selector de idioma compacto en menú desplegable (`🌐 ES ▾`).
+4. **Galería Completa con Gestos Táctiles y Scrubber (`GalleryCarousel3D.tsx`)**:
+   - 109 fotos indexadas con arrastre táctil con el dedo y barra deslizadora horizontal inferior.
 
 ---
 
 ## 📁 Archivos Modificados / Creados
-- `web/src/components/VideoSection.tsx`, `web/src/components/VideoSection.css`
-- `web/src/App.tsx`
+- `web/src/components/ClosingSection.css`
+- `web/index.html`, `web/src/styles/tokens.css`
 - `web/src/components/LetterSection.tsx`, `web/src/components/LetterSection.css`
-- `web/src/components/ClosingSection.tsx`, `web/src/components/ClosingSection.css`
-- `web/src/components/LanguageSelector.tsx`, `web/src/components/LanguageSelector.css`
-- `web/src/components/Timeline.tsx`, `web/src/components/Timeline.css`
-- `setup.sh`, `docs/SESSION_LATEST_ES.md`, `docs/ROADMAP.md`
+- `web/public/assets/images/red_wax_seal.jpg`, `web/public/assets/images/vintage_parchment_texture.jpg`
+- `web/src/config/assets.ts`
+- `web/src/components/GalleryCarousel3D.tsx`, `web/src/components/GalleryCarousel3D.css`
+- `docs/SESSION_LATEST_ES.md`, `docs/ROADMAP.md`
 
 ---
 
 ## 📌 Queda Pendiente
-- Despliegue en Cloudflare Pages / R2.
+- Despliegue estático continuo en Cloudflare Pages / R2.

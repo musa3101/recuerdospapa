@@ -11,112 +11,209 @@
   margin: var(--space-md) auto 0;
   display: flex;
   justify-content: center;
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
 /* ============================================================================
- * State 1: Sealed Vintage Luxury Envelope
+ * State 1: Realistic Parchment Envelope (Matching Reference Image)
  * ============================================================================ */
 .envelope-sealed-card {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  height: 280px;
-  background: linear-gradient(135deg, #2a241e 0%, #1e1915 100%);
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  border-radius: var(--border-radius-md);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.15);
+  max-width: 500px;
+  height: 330px;
+  background-color: #e5d5b7;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 250, 235, 0.4) 0%, rgba(200, 175, 135, 0.6) 100%),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 
+    0 22px 50px rgba(0, 0, 0, 0.85),
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 0 40px rgba(110, 80, 45, 0.3);
+  border: 1px solid rgba(160, 130, 90, 0.5);
   cursor: pointer;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  padding-bottom: 2.2rem;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  user-select: none;
+}
+
+@media (min-width: 480px) {
+  .envelope-sealed-card {
+    height: 350px;
+  }
 }
 
 .envelope-sealed-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: var(--accent-gold);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85), 0 0 45px rgba(212, 175, 55, 0.3);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(212, 175, 55, 0.25),
+    inset 0 0 50px rgba(110, 80, 45, 0.4);
 }
 
+/* Flaps & Paper Folds matching authentic envelope geometry */
 .envelope-top-flap {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 120px;
-  background: linear-gradient(180deg, #383028 0%, #241e19 100%);
+  height: 52%;
+  background-color: #dfcea9;
+  background-image: 
+    linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(120,90,50,0.15)),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  z-index: 2;
+  border-bottom: 1px solid rgba(130, 100, 60, 0.3);
+}
+
+.envelope-left-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #d6c39d;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.1), transparent),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
   z-index: 1;
+  opacity: 0.85;
 }
 
+.envelope-right-flap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #d6c39d;
+  background-image: 
+    linear-gradient(to left, rgba(0,0,0,0.1), transparent),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.envelope-bottom-flap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  background-color: #decb9f;
+  background-image: 
+    linear-gradient(to top, rgba(0,0,0,0.15), transparent),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Real Red Wax Seal Stamp in the exact center */
 .envelope-center-seal {
-  position: relative;
-  z-index: 3;
-  margin-top: -10px;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: transform 0.3s ease;
 }
 
-.wax-seal-badge {
-  width: 58px;
-  height: 58px;
+.envelope-sealed-card:hover .envelope-center-seal {
+  transform: translate(-50%, -50%) scale(1.08) rotate(3deg);
+}
+
+.wax-seal-img-wrapper {
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #c85336, #802613);
-  border: 2.5px solid #e29b87;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.75),
+    0 4px 10px rgba(120, 20, 20, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.4);
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 83, 54, 0.5);
-  transition: transform var(--transition-fast);
 }
 
-.envelope-sealed-card:hover .wax-seal-badge {
-  transform: scale(1.1);
+@media (min-width: 480px) {
+  .wax-seal-img-wrapper {
+    width: 95px;
+    height: 95px;
+  }
 }
 
-.wax-seal-heart {
-  color: #fbf8f1;
-  fill: #fbf8f1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+.wax-seal-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) brightness(1.02);
 }
 
+/* Front Text & Hint */
 .envelope-front-body {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1.2rem;
+  margin-top: 3.5rem;
 }
 
 .envelope-for-text {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--accent-gold-light);
-  letter-spacing: -0.01em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #3b281c;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .envelope-open-hint {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-  font-size: 0.82rem;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  font-size: 0.84rem;
   font-weight: 600;
-  color: var(--text-muted);
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.3rem 0.85rem;
+  color: #4a3525;
+  background: rgba(255, 250, 240, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 0.38rem 1rem;
   border-radius: var(--border-radius-pill);
-  border: 1px solid var(--border-subtle);
-  letter-spacing: 0.05em;
+  border: 1px solid rgba(130, 95, 55, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.envelope-sealed-card:hover .envelope-open-hint {
+  background: rgba(255, 252, 245, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .hint-sparkle {
-  color: var(--accent-gold);
+  color: #b8860b;
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
@@ -126,14 +223,19 @@
 .letter-paper {
   position: relative;
   width: 100%;
-  background: var(--bg-letter);
-  color: var(--text-letter-main);
-  border-radius: var(--border-radius-md);
+  background-color: #f7eedb;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(220,200,165,0.4) 100%),
+    url('/assets/images/vintage_parchment_texture.jpg');
+  background-size: cover;
+  color: #2e2015;
+  border-radius: 12px;
   padding: var(--space-xl) var(--space-md) var(--space-lg);
-  box-shadow: var(--shadow-letter);
-  border: 1px solid var(--border-letter);
-  background-image: radial-gradient(#ece3d2 1px, transparent 1px);
-  background-size: 24px 24px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(212, 175, 55, 0.2),
+    inset 0 0 60px rgba(130, 95, 50, 0.2);
+  border: 1px solid rgba(170, 135, 90, 0.5);
 }
 
 @media (min-width: 768px) {
@@ -145,7 +247,7 @@
 @keyframes letterUnfold {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.92);
+    transform: translateY(35px) scale(0.9);
   }
   100% {
     opacity: 1;
@@ -157,26 +259,18 @@
   animation: letterUnfold 0.65s var(--ease-organic) forwards;
 }
 
-.letter-seal {
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #a84931 0%, #85331e 100%);
-  border: 2px solid #d69785;
+.letter-seal-header {
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(168, 73, 49, 0.5);
-  z-index: 2;
+  margin-top: -10px;
+  margin-bottom: 1.25rem;
 }
 
-.seal-heart {
-  color: #fbf8f1;
-  fill: #fbf8f1;
+.letter-seal-mini-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .letter-inner-content {
@@ -185,12 +279,13 @@
 }
 
 .letter-salutation {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-letter-main);
+  color: #3b281c;
   margin-bottom: var(--space-md);
   letter-spacing: -0.01em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .letter-body {
@@ -201,15 +296,16 @@
 }
 
 .letter-paragraph {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--text-letter-main);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #36261a;
   font-weight: 400;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .letter-footer {
   position: relative;
-  border-top: 1px solid rgba(103, 91, 80, 0.18);
+  border-top: 1px solid rgba(130, 95, 55, 0.25);
   padding-top: var(--space-md);
   display: flex;
   flex-direction: column;
@@ -217,9 +313,9 @@
 }
 
 .letter-closing-line {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-style: italic;
-  color: var(--text-letter-muted);
+  color: #634b38;
   margin-bottom: 0.35rem;
 }
 
@@ -229,15 +325,15 @@
 }
 
 .letter-signature {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
   font-weight: 700;
-  color: #a84931;
+  color: #8c271e;
 }
 
 .letter-date-place {
-  font-size: 0.84rem;
-  color: var(--text-letter-muted);
+  font-size: 0.86rem;
+  color: #634b38;
   margin-top: 0.2rem;
 }
 
@@ -245,7 +341,7 @@
   position: absolute;
   right: 0;
   bottom: 8px;
-  color: rgba(168, 73, 49, 0.35);
+  color: rgba(140, 39, 30, 0.35);
 }
 
 .letter-fold-action {
@@ -258,18 +354,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-letter-muted);
-  background: rgba(103, 91, 80, 0.08);
-  border: 1px solid rgba(103, 91, 80, 0.2);
-  padding: 0.35rem 0.85rem;
+  color: #4a3525;
+  background: rgba(255, 250, 240, 0.8);
+  border: 1px solid rgba(130, 95, 55, 0.35);
+  padding: 0.4rem 1rem;
   border-radius: var(--border-radius-pill);
   transition: all var(--transition-fast);
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .letter-fold-btn:hover {
-  background: rgba(103, 91, 80, 0.15);
-  color: var(--text-letter-main);
+  background: rgba(255, 252, 245, 0.95);
+  color: #2e2015;
+  transform: translateY(-1px);
 }

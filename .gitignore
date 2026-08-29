@@ -3,3 +3,6 @@ node_modules/
 dist/
 .vite/
 *.log
+
+# Raw assets folder (large original video & image files)
+raw_assets/

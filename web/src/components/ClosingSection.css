@@ -13,123 +13,157 @@
   margin-top: var(--space-xl);
 }
 
+/* Background image: Bright, clear, family photo fully visible */
 .closing-background {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 35%;
   z-index: 1;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 10s ease-out;
 }
 
+.closing-section:hover .closing-background {
+  transform: scale(1.03);
+}
+
+/* Subtle Vignette & Light Ambient Overlay (Leaves background photo very clear) */
 .closing-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(18, 16, 14, 0.75) 25%,
-    rgba(18, 16, 14, 0.88) 65%,
-    rgba(18, 16, 14, 0.98) 100%
-  );
+  background: 
+    radial-gradient(ellipse at center, rgba(17, 15, 13, 0.25) 0%, rgba(17, 15, 13, 0.75) 100%),
+    linear-gradient(180deg, var(--bg-primary) 0%, transparent 20%, transparent 80%, var(--bg-primary) 100%);
+  z-index: 2;
 }
 
+/* Glassmorphic Container for Crisp Text & Clear Background Visibility */
 .closing-content {
   position: relative;
-  z-index: 2;
-  max-width: 580px;
+  z-index: 3;
+  width: 90%;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(18, 14, 11, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(212, 175, 55, 0.15),
+    inset 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 600px) {
+  .closing-content {
+    padding: var(--space-2xl) var(--space-xl);
+  }
 }
 
 .closing-heart-badge {
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  background: var(--accent-terracotta-dim);
-  border: 1.5px solid rgba(200, 109, 81, 0.4);
+  background: radial-gradient(circle at 35% 35%, #c85336, #802613);
+  border: 2px solid rgba(244, 231, 181, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-md);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(200, 109, 81, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 25px rgba(200, 83, 54, 0.4);
 }
 
 .closing-heart-icon {
-  color: var(--accent-terracotta);
-  fill: var(--accent-terracotta);
-  animation: pulseGlow 2.5s ease-in-out infinite;
+  color: #fff;
+  fill: #fff;
+  animation: pulseGlow 2.2s ease-in-out infinite;
 }
 
+/* Headline: Cinzel / Playfair Luxury Display */
 .closing-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-size: clamp(2.1rem, 6.5vw, 3.2rem);
   font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.15;
-  margin-bottom: 0.45rem;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
-  letter-spacing: -0.015em;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.02em;
 }
 
+/* Subtitle: Exquisite Calligraphic Handwriting Script (Alex Brush / Great Vibes) */
 .closing-final-words {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 5.5vw, 2.3rem);
-  font-style: italic;
-  font-weight: 600;
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 8vw, 4.2rem);
+  font-weight: 400;
   color: var(--accent-gold-light);
-  margin-bottom: var(--space-xl);
-  text-shadow: 0 2px 14px rgba(212, 175, 55, 0.35);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(212, 175, 55, 0.45);
+  transform: rotate(-1.5deg);
 }
 
 .closing-subtle-family {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: 0.85;
+  color: rgba(248, 245, 238, 0.85);
   margin-bottom: var(--space-lg);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--border-radius-pill);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .closing-sparkle-icon {
   color: var(--accent-gold);
+  animation: pulseGlow 2s ease-in-out infinite;
 }
 
 /* Dedicated Footer Credit by Musa */
 .closing-made-by-musa {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background: rgba(22, 19, 16, 0.7);
+  gap: 0.5rem;
+  background: rgba(14, 11, 9, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 0.45rem 1.25rem;
   border-radius: var(--border-radius-pill);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
   margin-top: var(--space-xs);
   transition: all var(--transition-fast);
 }
 
 .closing-made-by-musa:hover {
-  border-color: rgba(212, 175, 55, 0.5);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+  border-color: var(--accent-gold);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.35);
 }
 
 .made-by-text {
-  font-size: 0.84rem;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .made-by-heart {
-  color: #d65a3d;
-  fill: #d65a3d;
+  color: #e74c3c;
+  fill: #e74c3c;
   animation: subtleFloat 2s ease-in-out infinite;
 }
