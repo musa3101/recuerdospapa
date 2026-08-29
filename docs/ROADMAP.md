@@ -5,6 +5,7 @@
 - [x] Configuración centralizada de medios y preparación para Cloudflare Pages y Cloudflare R2 (`assets.ts`).
 - [x] Implementación de Hero emocional con tipografía editorial y botón interactivo.
 - [x] Sección de vídeo vertical con proporción 9:16 y controles accesibles.
+- [x] **Vídeo en Full HD 1080x1920 Nítido**: Codificación de alta fidelidad con filtro Lanczos y audio AAC estéreo sin pérdida visible de calidad.
 - [x] **Ampliación de la Galería 3D**: Integración de las 109 fotos de la colección `fotos todos` con rendimiento optimizado.
 - [x] **Gestos Táctiles Móviles**: Arrastre y deslizamiento táctil intuitivo con el dedo (*mobile touch drag/swipe*) en la galería y en la vista fullscreen.
 - [x] **Deslizador Inferior de Navegación**: Barra scrubber horizontal dorada (`<input type="range">`) con contador en tiempo real (`Foto X de 109`).
