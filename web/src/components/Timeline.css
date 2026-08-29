@@ -2,165 +2,195 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-.timeline-container {
+.timeline-vertical-flow {
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 580px;
   margin: 0 auto;
-  padding: var(--space-md) 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
+  padding: var(--space-md) 0 var(--space-xl);
 }
 
-.timeline-line {
+/* Continuous Vertical Spine */
+.timeline-spine-line {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 20px;
+  top: var(--space-lg);
+  bottom: var(--space-lg);
+  left: 24px;
   width: 2px;
   background: linear-gradient(
     180deg,
-    transparent 0%,
-    var(--accent-gold) 15%,
-    var(--accent-gold) 85%,
-    transparent 100%
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.6) 20%,
+    rgba(212, 175, 55, 0.6) 80%,
+    rgba(212, 175, 55, 0.1) 100%
   );
-  opacity: 0.35;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
-  .timeline-line {
-    left: 24px;
+  .timeline-spine-line {
+    left: 28px;
   }
 }
 
-.timeline-item {
+/* Each Chapter in the Vertical Story */
+.timeline-step-card {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: flex-start;
-  padding-left: 48px;
+  gap: var(--space-md);
+  padding-left: 0;
 }
 
-@media (min-width: 768px) {
-  .timeline-item {
-    padding-left: 56px;
-  }
+/* Step Milestone Marker (01, 02, 03) */
+.timeline-step-badge-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 3;
 }
 
-.timeline-node {
-  position: absolute;
-  left: 11px;
-  top: 14px;
-  width: 20px;
-  height: 20px;
+.timeline-step-circle {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border: 2px solid var(--accent-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.3);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 @media (min-width: 768px) {
-  .timeline-node {
-    left: 15px;
+  .timeline-step-circle {
+    width: 56px;
+    height: 56px;
   }
 }
 
-.timeline-node-inner {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--accent-gold);
+.timeline-step-card:hover .timeline-step-circle {
+  transform: scale(1.06);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
 }
 
-.timeline-card {
-  width: 100%;
+.timeline-step-num {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-gold-light);
+  letter-spacing: -0.02em;
+}
+
+/* Vertical Card Body */
+.timeline-card-content {
+  flex: 1;
   background: var(--bg-card);
   border: 1px solid var(--border-medium);
-  border-radius: var(--border-radius-md);
-  padding: var(--space-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-.timeline-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(212, 175, 55, 0.4);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-md);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
 }
 
-.timeline-card-header {
+.timeline-step-card:hover .timeline-card-content {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(212, 175, 55, 0.12);
+}
+
+/* Meta row (Date + Tag) */
+.timeline-meta-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
-.timeline-date-badge {
+.timeline-date-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
+  gap: 0.4rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--accent-gold-light);
   background: var(--accent-gold-dim);
-  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.3rem 0.85rem;
   border-radius: var(--border-radius-pill);
 }
 
-.timeline-tag {
+.timeline-category-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
-.timeline-card-title {
-  font-size: 1.25rem;
+.timeline-event-title {
+  font-size: clamp(1.25rem, 4vw, 1.55rem);
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1.35;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.015em;
 }
 
-.timeline-card-desc {
-  font-size: 0.95rem;
+.timeline-event-desc {
+  font-size: 0.98rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
-.timeline-image-wrapper {
+/* Portrait Vertical Photo Frame */
+.timeline-portrait-frame {
   position: relative;
   width: 100%;
-  border-radius: var(--border-radius-sm);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--border-radius-md);
   overflow: hidden;
-  max-height: 260px;
-  background-color: #0c0a09;
+  background-color: #0d0b09;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.timeline-image {
+.timeline-portrait-img {
   width: 100%;
-  height: 240px;
+  height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  transition: transform var(--transition-smooth);
+  transition: transform 0.6s var(--ease-organic);
 }
 
-.timeline-card:hover .timeline-image {
-  transform: scale(1.03);
+.timeline-step-card:hover .timeline-portrait-img {
+  transform: scale(1.04);
 }
 
-.timeline-image-shadow {
+.timeline-frame-overlay {
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(17, 15, 13, 0.2) 60%,
+    rgba(17, 15, 13, 0.6) 100%
+  );
   pointer-events: none;
 }

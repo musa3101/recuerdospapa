@@ -28,46 +28,54 @@ export const Timeline: React.FC = () => {
         </p>
       </div>
 
-      <div className="timeline-container">
-        <div className="timeline-line" aria-hidden="true" />
+      <div className="timeline-vertical-flow">
+        {/* Central Continuous Vertical Spine */}
+        <div className="timeline-spine-line" aria-hidden="true" />
 
-        {t.timeline.events.map((event) => {
+        {t.timeline.events.map((event, index) => {
           const imageUrl = TIMELINE_IMAGES[event.id];
+          const stepNumber = String(index + 1).padStart(2, '0');
 
           return (
-            <article key={event.id} className="timeline-item">
-              {/* Timeline Node Icon */}
-              <div className="timeline-node" aria-hidden="true">
-                <span className="timeline-node-inner" />
+            <article key={event.id} className="timeline-step-card">
+              {/* Vertical Step Milestone Marker */}
+              <div className="timeline-step-badge-wrapper">
+                <div className="timeline-step-circle">
+                  <span className="timeline-step-num">{stepNumber}</span>
+                </div>
+                <div className="timeline-step-connector" aria-hidden="true" />
               </div>
 
-              {/* Timeline Event Card */}
-              <div className="timeline-card">
-                <header className="timeline-card-header">
-                  <span className="timeline-date-badge">
-                    <Calendar size={12} />
+              {/* Vertical Card Body */}
+              <div className="timeline-card-content">
+                {/* Meta Header */}
+                <div className="timeline-meta-row">
+                  <span className="timeline-date-pill">
+                    <Calendar size={13} />
                     <span>{event.yearOrDate}</span>
                   </span>
                   {event.tag && (
-                    <span className="timeline-tag">
-                      <Sparkles size={11} />
+                    <span className="timeline-category-tag">
+                      <Sparkles size={12} />
                       <span>{event.tag}</span>
                     </span>
                   )}
-                </header>
+                </div>
 
-                <h3 className="timeline-card-title">{event.title}</h3>
-                <p className="timeline-card-desc">{event.description}</p>
+                {/* Title & Description */}
+                <h3 className="timeline-event-title">{event.title}</h3>
+                <p className="timeline-event-desc">{event.description}</p>
 
+                {/* Vertical Portrait Photo Frame */}
                 {imageUrl && (
-                  <div className="timeline-image-wrapper">
+                  <div className="timeline-portrait-frame">
                     <img
                       src={imageUrl}
                       alt={event.title}
-                      className="timeline-image"
+                      className="timeline-portrait-img"
                       loading="lazy"
                     />
-                    <div className="timeline-image-shadow" />
+                    <div className="timeline-frame-overlay" />
                   </div>
                 )}
               </div>
