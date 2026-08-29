@@ -15,15 +15,14 @@
 - [x] Cierre emotivo y memorable ("Hecho por Musa con amor ❤️").
 - [x] Internacionalización completa (Español, Inglés y Bengalí) con selector flotante accesible (`i18nstack`).
 - [x] Configuración y sincronización con el repositorio remoto de GitHub (`https://github.com/musa3101/recuerdospapa`).
+- [x] **Despliegue en Cloudflare Pages**: Proyecto activo y funcionando en **`https://abdulhanif.pages.dev`**.
 
 ---
 
 ## ⏳ Tareas en Progreso
-- [ ] Validación final y pruebas en dispositivos móviles reales.
+- [ ] Pruebas en dispositivos móviles de la familia mediante escaneo QR.
 
 ---
 
-## 🚀 Próximas Mejoras Prioritarias
-1. **Despliegue en Cloudflare**:
-   - Conectar bucket de Cloudflare R2 para servir vídeo e imágenes en alta resolución.
-   - Despliegue estático continuo en Cloudflare Pages.
+## 🚀 Próximas Mejoras Opcionales
+1. **Cloudflare R2**: Conectar bucket de R2 si se desea subir vídeos adicionales de mayor duración.

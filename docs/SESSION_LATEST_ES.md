@@ -4,22 +4,23 @@
 29 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Ampliación de la galería de recuerdos (109 fotos), gestos táctiles móviles, rediseño fotorrealista del sobre vintage con sello de cera, optimización del cierre final con tipografía caligráfica y configuración del despliegue en Cloudflare Workers / Pages (`abdulhanif`).
+Ampliación de la galería de recuerdos (109 fotos), gestos táctiles móviles, rediseño fotorrealista del sobre vintage con sello de cera, optimización del cierre final con tipografía caligráfica y despliegue en producción en Cloudflare Pages (`https://abdulhanif.pages.dev`).
 
 ---
 
 ## 🛠️ Qué se ha hecho
-1. **Configuración de Despliegue en Cloudflare (`wrangler.toml`, `package.json`)**:
-   - Diagnosticado el fallo de compilación en Cloudflare: Cloudflare ejecutaba `npx wrangler deploy` en el directorio raíz sin comando de compilación ni archivo `wrangler.toml`.
-   - Creados archivos de configuración `wrangler.toml` (en raíz y en `web/`) con vinculación de activos estáticos SPA (`./web/dist`) y comando de compilación automático (`cd web && npm install && npm run build`).
-   - Sincronizadas las ramas `dev` y `main` en el repositorio remoto GitHub.
+1. **Despliegue Oficial en Cloudflare Pages (`https://abdulhanif.pages.dev`)**:
+   - Creado y configurado el proyecto de Cloudflare Pages `abdulhanif`.
+   - Optimizado y comprimido el vídeo a 15 MB para cumplir el límite de 25 MB por archivo de Cloudflare Pages.
+   - Desplegados 162 archivos estáticos (HTML, JS, CSS, 109 fotografías en galería, vídeo familiar y assets fotorrealistas).
+   - Verificado el estado en vivo de la URL pública.
 
 2. **Visibilidad Nítida de la Foto de Fondo y Tarjeta de Cristal (`ClosingSection.css`)**:
-   - Ajustada la superposición de gradiente para que la fotografía familiar del fondo sea 100% clara, brillante y emotiva.
-   - Enmarcado el mensaje en un contenedor de cristal esmerilado translúcido (`backdrop-filter: blur(14px)`) con bordes dorados, garantizando máxima legibilidad.
+   - Fotografía familiar de fondo 100% clara, brillante y emotiva.
+   - Enmarcado del mensaje en un contenedor de cristal esmerilado translúcido (`backdrop-filter: blur(14px)`).
 
-3. **Tipografía Caligráfica y Tipografías de Lujo (`Alex Brush`, `Cinzel`, `Outfit`)**:
-   - Incorporadas fuentes de Google Fonts: `Alex Brush` / `Great Vibes` para subtítulos caligráficos hechos a mano (*"Te queremos, papá."*) y `Cinzel` para el título principal.
+3. **Tipografía Caligráfica de Lujo (`Alex Brush`, `Cinzel`, `Outfit`)**:
+   - Incorporadas fuentes de Google Fonts: `Alex Brush` para subtítulos caligráficos hechos a mano (*"Te queremos, papá."*) y `Cinzel` para el título principal.
 
 4. **Rediseño Fotorrealista de la Carta y Sobre (`LetterSection.tsx`, `LetterSection.css`)**:
    - Sobre de pergamino vintage con solapas tridimensionales y sello de cera rojo 3D en relieve (`/assets/images/red_wax_seal.jpg`).
@@ -41,5 +42,5 @@ Ampliación de la galería de recuerdos (109 fotos), gestos táctiles móviles, 
 
 ---
 
-## 📌 Queda Pendiente
-- Conexión opcional con Cloudflare R2 para servir multimedia pesada en streaming CDN.
+## 🌐 Enlace en Vivo
+- **Producción**: [https://abdulhanif.pages.dev](https://abdulhanif.pages.dev)
