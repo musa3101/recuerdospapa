@@ -4,37 +4,37 @@
 29 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical con las 4 etapas reales familiares, soporte multilingüe completo (Español, Inglés y Bengalí) y sincronización git.
+Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical con las 4 etapas familiares, tipografía de lujo editorial (`Cormorant Garamond`), selector de idioma en desplegable (*dropdown*) flotante compacto y sincronización git.
 
 ---
 
 ## 🛠️ Qué se ha hecho
-1. **Actualización de la Cronología con las 4 Etapas Reales (`cronologia`)**:
-   - **Etapa 01 (`1.JPG`)**: *Los primeros sobrinos* — Disfrutando con la nueva generación y compartiendo con los sobrinos de la hermana mayor.
-   - **Etapa 02 (`2.JPG`)**: *Etapa militar y de servicio* — Años de disciplina, entrega y honor en el ejército.
-   - **Etapa 03 (`3.jpg`)**: *Celebración de Eid Mubarak* — Unión familiar, bendiciones y alegría en las festividades.
-   - **Etapa 04 (`4.JPG`)**: *Celebrando tu cumpleaños* — Homenaje de amor, respeto y gratitud en su último cumpleaños.
-   - Fotos optimizadas en vertical (4:5) y textos localizados en **Español**, **Inglés** y **Bengalí**.
+1. **Refinamiento del Hero**:
+   - Eliminada la frase/badge superior *"Un regalo desde el corazón"*.
+   - Aplicada la tipografía editorial de lujo **`Cormorant Garamond`** para *"Para papá"* y subtítulo en cursiva dorada suave, con alta legibilidad y elegancia visual.
+   - Posicionado el botón *"COMENZAR"* más abajo con mayor margen de respiro.
+   - Mantenido el slideshow suave de 3.5s con Ken Burns continuo y fundido cruzado atmosférico.
 
-2. **Hero Cinematográfico**:
-   - 5 fotos del Hero conectadas con fundido suave (*crossfade* de 1.4s) y efecto Ken Burns lento de 3.5s.
-   - Botón interactivo animado de Uiverse.io y texto anclado abajo para dar prioridad a los rostros.
+2. **Nuevo Selector de Idiomas en Desplegable (*Dropdown*)**:
+   - Sustituida la barra horizontal por un **botón flotante compacto con icono de globo y código de idioma actual** (`🌐 ES ▾`).
+   - Al tocarlo, se despliega un elegante menú hacia abajo con banderas y nombres completos: 🇪🇸 Español (ES), 🇬🇧 English (EN) y 🇧🇩 বাংলা (BN).
+   - Cierre automático al seleccionar y al hacer clic fuera.
 
-3. **Galería 3D Carousel Interactiva**:
-   - Perspectiva CSS 3D, swipe táctil para móviles, controles y modal lightbox.
+3. **Cronología Vertical con 4 Etapas Familiares**:
+   - *01 Los primeros sobrinos*, *02 Etapa militar*, *03 Eid Mubarak* y *04 Cumpleaños*.
 
-4. **Internacionalización y Git**:
-   - Selector multilingüe (ES, EN, BN) y rama `dev` limpia y actualizada.
+4. **Galería 3D Carousel Interactiva**:
+   - Carrusel 3D con perspectiva CSS real, swipe móvil, controles y modal lightbox.
 
 ---
 
 ## 📁 Archivos Modificados / Creados
+- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
+- `web/src/components/LanguageSelector.tsx`, `web/src/components/LanguageSelector.css`
+- `web/index.html`, `web/src/styles/tokens.css`
 - `web/src/components/Timeline.tsx`, `web/src/components/Timeline.css`
-- `web/public/assets/images/timeline/` (4 fotos: `timeline-1.jpg` a `timeline-4.jpg`)
 - `web/src/config/assets.ts`
 - `web/src/i18n/translations.ts`
-- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
-- `web/src/components/GalleryCarousel3D.tsx`
 - `setup.sh`, `docs/SESSION_LATEST_ES.md`, `docs/ROADMAP.md`
 
 ---
