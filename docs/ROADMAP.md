@@ -6,12 +6,12 @@
 - [x] Implementación de Hero emocional con tipografía editorial y botón interactivo.
 - [x] Sección de vídeo vertical con proporción 9:16 y controles accesibles.
 - [x] Reserva y placeholder elegante para la sección de galería familiar.
-- [x] Línea temporal vertical con hitos editables y fotografías.
+- [x] Rediseño de la línea temporal a un flujo vertical narrativo con hitos editables y fotos verticales.
 - [x] Carta/dedicatoria con textura de papel cálido y datos desacoplados.
 - [x] Cierre emotivo y memorable.
 - [x] Optimización de tipografía (`gpt-taste`), cinemática (`motion-design`) y microinteracciones (`uipro-max`).
 - [x] Internacionalización completa (Español, Inglés y Bengalí) con selector flotante accesible (`i18nstack`).
-- [x] Sincronización con el repositorio remoto de GitHub (`https://github.com/musa3101/recuerdospapa`).
+- [x] Configuración y sincronización con el repositorio remoto de GitHub (`https://github.com/musa3101/recuerdospapa`).
 
 ---
 
