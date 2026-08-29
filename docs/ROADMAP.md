@@ -1,7 +1,8 @@
 # Roadmap del Proyecto: Web de Recuerdos "Para papá"
 
 ## ✅ Tareas Completadas
-- [x] **Auto-despliegue CI/CD automático**: Flujo con GitHub Actions que compila y despliega en Cloudflare Pages en cada `git push` a `main`.
+- [x] **Auto-despliegue CI/CD automático**: Flujo con GitHub Actions y Cloudflare Git que compila y despliega en Cloudflare Pages en cada `git push` a `main`.
+- [x] **Blindaje Móvil (iOS/Android)**: `ErrorBoundary`, rutas absolutas (`base: '/'`), `target: 'es2020'` y compatibilidad GPU en Safari.
 - [x] **Solución a caché de iPhone / Safari**: Inclusión de directivas `_headers` para entrega inmediata de `index.html` actualizado.
 - [x] **Limpieza de Cloudflare**: Eliminado el Worker sobrante y centralizado todo en Cloudflare Pages.
 - [x] **Optimización integral de 109 fotos**: Miniaturas automáticas a 480px, ahorro del 92% de RAM y carga en alta resolución bajo demanda.
