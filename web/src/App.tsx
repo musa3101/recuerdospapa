@@ -1,4 +1,6 @@
 import React from 'react';
+import { LanguageProvider } from './i18n/LanguageContext';
+import { LanguageSelector } from './components/LanguageSelector';
 import { Hero } from './components/Hero';
 import { VideoSection } from './components/VideoSection';
 import { GalleryPlaceholder } from './components/GalleryPlaceholder';
@@ -9,28 +11,33 @@ import './styles/global.css';
 
 export const App: React.FC = () => {
   return (
-    <div className="app-container">
-      {/* 1. Hero Emocional */}
-      <Hero />
+    <LanguageProvider>
+      <div className="app-container">
+        {/* Language Selector Fixed Floating Pill */}
+        <LanguageSelector />
 
-      {/* Main Content Sections */}
-      <main style={{ width: '100%' }}>
-        {/* 2. Sección de Vídeo Vertical 9:16 */}
-        <VideoSection />
+        {/* 1. Hero Emocional */}
+        <Hero />
 
-        {/* 3. Placeholder de Galería (Fase 1) */}
-        <GalleryPlaceholder />
+        {/* Main Content Sections */}
+        <main style={{ width: '100%' }}>
+          {/* 2. Sección de Vídeo Vertical 9:16 */}
+          <VideoSection />
 
-        {/* 4. Línea Temporal */}
-        <Timeline />
+          {/* 3. Placeholder de Galería (Fase 1) */}
+          <GalleryPlaceholder />
 
-        {/* 5. Carta / Dedicatoria */}
-        <LetterSection />
-      </main>
+          {/* 4. Línea Temporal */}
+          <Timeline />
 
-      {/* 6. Cierre Emocional */}
-      <ClosingSection />
-    </div>
+          {/* 5. Carta / Dedicatoria */}
+          <LetterSection />
+        </main>
+
+        {/* 6. Cierre Emocional */}
+        <ClosingSection />
+      </div>
+    </LanguageProvider>
   );
 };
 

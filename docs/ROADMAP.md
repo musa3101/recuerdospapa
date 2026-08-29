@@ -10,11 +10,13 @@
 - [x] Carta/dedicatoria con textura de papel cálido y datos desacoplados.
 - [x] Cierre emotivo y memorable.
 - [x] Optimización de tipografía (`gpt-taste`), cinemática (`motion-design`) y microinteracciones (`uipro-max`).
+- [x] Internacionalización completa (Español, Inglés y Bengalí) con selector flotante accesible (`i18nstack`).
+- [x] Sincronización con el repositorio remoto de GitHub (`https://github.com/musa3101/recuerdospapa`).
 
 ---
 
 ## ⏳ Tareas en Progreso
-- [ ] Refinamiento continuo de estilos y pruebas de experiencia móvil.
+- [ ] Validación de la experiencia en dispositivos móviles reales mediante el QR.
 
 ---
 

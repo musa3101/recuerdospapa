@@ -29,18 +29,18 @@
   --border-subtle: rgba(248, 245, 238, 0.08);
   --border-medium: rgba(248, 245, 238, 0.15);
 
-  /* Shadows & Glows (uipro-max) */
+  /* Shadows & Glows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
   --shadow-letter: 0 16px 40px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.12);
   --glow-warm: 0 0 35px var(--accent-gold-glow);
 
-  /* Typography (gpt-taste) */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography with Bengali font support */
+  --font-serif: 'Playfair Display', 'Noto Serif Bengali', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Max-width for optimal reading rhythm (gpt-taste: 65ch) */
+  /* Max-width for reading rhythm */
   --max-prose-width: 65ch;
 
   /* Spacing */
@@ -66,7 +66,7 @@
   --sal: env(safe-area-inset-left, 0px);
   --sar: env(safe-area-inset-right, 0px);
 
-  /* Motion Curves (motion-design) */
+  /* Motion Curves */
   --ease-organic: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s var(--ease-organic);
   --transition-smooth: 0.45s var(--ease-organic);

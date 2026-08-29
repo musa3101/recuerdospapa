@@ -1,22 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { Play, Pause, Volume2, VolumeX, Film, Sparkles } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
+import { useLanguage } from '../i18n/LanguageContext';
 import './VideoSection.css';
 
 export const VideoSection: React.FC = () => {
+  const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Resolving video source and poster
-  // TODO: Point to real 9:16 video on Cloudflare R2 or /public/assets/video/
   const videoSrc = resolveAssetUrl(ASSETS.video.src);
   const posterUrl = resolveAssetUrl(ASSETS.video.poster);
 
   const togglePlay = () => {
     if (!videoRef.current || !videoSrc) {
-      // In placeholder mode, toggle state for UI demonstration
       setIsPlaying(!isPlaying);
       setHasStarted(true);
       return;
@@ -47,13 +47,13 @@ export const VideoSection: React.FC = () => {
       <div className="section-header">
         <span className="section-tag">
           <Film size={13} />
-          <span>Cinemática</span>
+          <span>{t.video.tag}</span>
         </span>
         <h2 id="video-title" className="section-title">
-          Nuestros recuerdos
+          {t.video.title}
         </h2>
         <p className="section-subtitle">
-          Una pequeña historia hecha de momentos que siempre llevaremos con nosotros.
+          {t.video.subtitle}
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export const VideoSection: React.FC = () => {
                 setIsPlaying(false);
                 setHasStarted(false);
               }}
-              aria-label={ASSETS.video.title}
+              aria-label={t.video.title}
             >
               <source src={videoSrc} type="video/mp4" />
               Tu navegador no soporta la reproducción de este vídeo.
@@ -83,13 +83,13 @@ export const VideoSection: React.FC = () => {
               className="video-poster-placeholder"
               style={{ backgroundImage: `url(${posterUrl})` }}
               role="img"
-              aria-label={ASSETS.video.title}
+              aria-label={t.video.title}
             >
               <div className="video-poster-overlay" />
               {!hasStarted && (
                 <div className="video-pending-badge">
                   <Sparkles size={14} />
-                  <span>Vídeo en preparación</span>
+                  <span>{t.video.preparing}</span>
                 </div>
               )}
             </div>
@@ -102,11 +102,11 @@ export const VideoSection: React.FC = () => {
                 type="button"
                 className="video-play-button"
                 onClick={togglePlay}
-                aria-label={isPlaying ? 'Pausar vídeo' : 'Reproducir vídeo de recuerdos'}
+                aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
               >
                 <Play size={28} className="play-icon" />
               </button>
-              <span className="video-tap-hint">Pulsa para reproducir</span>
+              <span className="video-tap-hint">{t.video.playHint}</span>
             </div>
           )}
 
@@ -117,7 +117,7 @@ export const VideoSection: React.FC = () => {
                 type="button"
                 className="video-control-btn"
                 onClick={togglePlay}
-                aria-label={isPlaying ? 'Pausar' : 'Reproducir'}
+                aria-label={isPlaying ? t.video.pauseAria : t.video.playAria}
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} />}
               </button>
@@ -126,7 +126,7 @@ export const VideoSection: React.FC = () => {
                 type="button"
                 className="video-control-btn"
                 onClick={toggleMute}
-                aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}
+                aria-label={isMuted ? t.video.soundOnAria : t.video.soundOffAria}
               >
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
               </button>

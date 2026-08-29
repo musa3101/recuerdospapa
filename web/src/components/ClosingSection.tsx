@@ -1,9 +1,11 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
+import { useLanguage } from '../i18n/LanguageContext';
 import './ClosingSection.css';
 
 export const ClosingSection: React.FC = () => {
+  const { t } = useLanguage();
   const closingImageUrl = resolveAssetUrl(ASSETS.closing.image);
 
   return (
@@ -24,15 +26,15 @@ export const ClosingSection: React.FC = () => {
         </div>
 
         <h2 className="closing-title">
-          Gracias por todos los recuerdos.
+          {t.closing.title}
         </h2>
 
         <p className="closing-final-words">
-          Te queremos, papá.
+          {t.closing.finalWords}
         </p>
 
         <div className="closing-subtle-family">
-          <span>Siempre juntos</span>
+          <span>{t.closing.family}</span>
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronDown, Heart } from 'lucide-react';
 import { ASSETS, resolveAssetUrl } from '../config/assets';
+import { useLanguage } from '../i18n/LanguageContext';
 import './Hero.css';
 
 interface HeroProps {
@@ -8,6 +9,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
+  const { t } = useLanguage();
   const heroImageUrl = resolveAssetUrl(ASSETS.hero.image);
 
   const handleScrollDown = () => {
@@ -38,15 +40,15 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
       <div className="hero-content">
         <div className="hero-badge animate-blur-reveal" style={{ animationDelay: '0.1s' }}>
           <Heart className="hero-badge-icon" size={13} />
-          <span>UN REGALO DESDE EL CORAZÓN</span>
+          <span>{t.hero.badge}</span>
         </div>
 
         <h1 className="hero-title animate-blur-reveal" style={{ animationDelay: '0.25s' }}>
-          Para papá
+          {t.hero.title}
         </h1>
 
         <p className="hero-subtitle animate-blur-reveal" style={{ animationDelay: '0.4s' }}>
-          Un pequeño recuerdo de todo lo que significas para nosotros.
+          {t.hero.subtitle}
         </p>
 
         <div className="hero-cta-wrapper animate-blur-reveal" style={{ animationDelay: '0.55s' }}>
@@ -54,9 +56,9 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
             type="button"
             className="hero-cta-button"
             onClick={handleScrollDown}
-            aria-label="Comenzar a ver los recuerdos de papá"
+            aria-label={t.hero.cta}
           >
-            <span>COMENZAR</span>
+            <span>{t.hero.cta}</span>
             <ChevronDown size={17} className="hero-cta-icon" />
           </button>
         </div>
@@ -67,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartClick }) => {
         <div className="scroll-indicator-mouse">
           <div className="scroll-indicator-dot" />
         </div>
-        <span className="scroll-indicator-text">DESLIZA PARA VER MÁS</span>
+        <span className="scroll-indicator-text">{t.hero.scrollHint}</span>
       </div>
     </header>
   );
