@@ -4,18 +4,17 @@
 29 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical, soporte multilingüe completo (Español, Inglés y Bengalí), y rediseño del Hero con enfoque en visibilidad de rostros, efecto Ken Burns (Zoom-In / Zoom-Out) y botón interactivo animado de Uiverse.io.
+Construir la primera versión de la landing web móvil emotiva "Para papá", adaptada a escaneo QR, con integración del carrusel 3D, cronología vertical, soporte multilingüe completo (Español, Inglés y Bengalí), y conexión de las 5 fotos reales de la carpeta `hero fotos` con transiciones dinámicas Ken Burns cada 2.8 segundos.
 
 ---
 
 ## 🛠️ Qué se ha hecho
-1. **Rediseño del Hero y Prioridad Visual a las Fotos**:
-   - Desplazado todo el bloque de texto y botón a la **parte inferior** (`hero-bottom-content`) con un degradado oscuro suave abajo, dejando los rostros familiares en el centro/arriba 100% despejados y protagonistas.
-   - Eliminado el indicador inferior *"Desliza para ver más"*.
-   - Implementado **Slideshow con transiciones cinematográficas Ken Burns** (efecto de Zoom-In y Zoom-Out alternante cada 6 segundos).
+1. **Fotos Personalizadas del Hero (`hero fotos`)**:
+   - Integradas las 5 fotografías seleccionadas por el usuario para el fondo del Hero.
+   - Configurado el ciclo de rotación a **2.8 segundos** (~2-3s) con transiciones suaves de Zoom-In y Zoom-Out (efecto Ken Burns calibrado).
 
-2. **Nuevo Botón Animado (Uiverse.io by ShadowShahriar)**:
-   - Integrado el botón con borde animado de degradado cónico (`conic-gradient`), máscara de recorte y rotación continua de tono (`rotate-hue`), con efecto táctil y microinteracción al presionar.
+2. **Rediseño del Hero y Prioridad Visual a las Fotos**:
+   - Todo el bloque de texto y el botón animado (`uiverse-conic-btn`) ubicados en la parte inferior para que los rostros en el centro y parte superior queden 100% visibles y destacados.
 
 3. **Galería 3D Carousel Interactiva (`GalleryCarousel3D.tsx`)**:
    - Carrusel 3D con perspectiva CSS real, soporte de deslizamiento táctil (swipe), controles de giro, lightbox y reflejos.
@@ -29,17 +28,16 @@ Construir la primera versión de la landing web móvil emotiva "Para papá", ada
 ---
 
 ## 📁 Archivos Modificados / Creados
-- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
 - `web/src/config/assets.ts`
+- `web/src/components/Hero.tsx`, `web/src/components/Hero.css`
+- `web/public/assets/images/hero/` (5 fotografías de portada)
 - `web/src/components/GalleryCarousel3D.tsx`, `web/src/components/GalleryCarousel3D.css`
 - `web/src/components/Timeline.tsx`, `web/src/components/Timeline.css`
 - `web/src/i18n/types.ts`, `web/src/i18n/translations.ts`, `web/src/i18n/LanguageContext.tsx`
 - `web/src/components/LanguageSelector.tsx`, `web/src/components/LanguageSelector.css`
-- `web/src/App.tsx`, `web/src/main.tsx`, `web/index.html`
 - `setup.sh`, `docs/SESSION_LATEST_ES.md`, `docs/ROADMAP.md`
 
 ---
 
 ## 📌 Queda Pendiente
-- Carga de fotos definitivas personalizadas para el carrusel del Hero según las indicaciones del usuario.
 - Despliegue en Cloudflare Pages / R2.
