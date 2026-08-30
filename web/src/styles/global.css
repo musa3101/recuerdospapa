@@ -77,6 +77,8 @@ a, button {
   padding: var(--space-xl) var(--space-md);
   margin: 0 auto;
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 @media (min-width: 768px) {
@@ -170,7 +172,7 @@ a, button {
 
 .animate-blur-reveal {
   animation: blurReveal 1s var(--ease-organic) forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 /* Microinteractions (uipro-max) */

@@ -42,6 +42,8 @@ Configurar la auto-implementación (CI/CD) automática en cada `git push`, resol
 
 ---
 
-## 🌐 Enlace en Producción
+## 🌐 Enlaces en Producción
+- **URL Oficial y Blindada (Vercel)**: [https://abdulhanif.vercel.app](https://abdulhanif.vercel.app) *(Recomendada para el código QR de la taza)*
+- **GitHub Pages (Respaldo)**: [https://musa3101.github.io/recuerdospapa/](https://musa3101.github.io/recuerdospapa/)
 - **Cloudflare Pages**: [https://abdulhanif.pages.dev](https://abdulhanif.pages.dev)
 - **Deployment Directo**: [https://2d5f101a.abdulhanif.pages.dev](https://2d5f101a.abdulhanif.pages.dev)
