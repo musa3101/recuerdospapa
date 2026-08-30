@@ -44,7 +44,27 @@
         animation: sp .7s linear infinite;
       }
       @keyframes sp { to { transform: rotate(360deg); } }
+      .splash-retry-btn {
+        background: #D4AF37; color: #110F0D; border: none;
+        border-radius: 12px; padding: 0.8rem 1.8rem;
+        font-weight: bold; font-size: 1rem; cursor: pointer;
+        margin-top: 0.5rem;
+      }
     </style>
+
+    <!-- CRITICAL: Unregister any existing Service Worker and purge all caches -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+        });
+        if ('caches' in window) {
+          caches.keys().then(function(keys) {
+            keys.forEach(function(k) { caches.delete(k); });
+          });
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root">
@@ -56,5 +76,28 @@
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Anti-black-screen fallback: if React doesn't mount in 10s, show retry -->
+    <script>
+      (function() {
+        var timer = setTimeout(function() {
+          var splash = document.getElementById('splash-loader');
+          if (splash && document.querySelector('.app-container') === null) {
+            splash.innerHTML =
+              '<h1 style="color:#D4AF37;font-size:2rem;margin-bottom:0.5rem;">Para papá</h1>' +
+              '<p style="color:#C8BDAF;margin-bottom:1rem;">La página tardó en cargar.</p>' +
+              '<button class="splash-retry-btn" onclick="location.reload()">Reintentar</button>';
+          }
+        }, 10000);
+        // Cancel the timer if React mounts successfully
+        var observer = new MutationObserver(function(mutations) {
+          if (document.querySelector('.app-container')) {
+            clearTimeout(timer);
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+      })();
+    </script>
   </body>
 </html>
