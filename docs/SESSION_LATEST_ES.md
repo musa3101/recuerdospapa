@@ -40,5 +40,7 @@ Resolver el problema de bloqueo/carga infinita en iPhone (Safari / WebKit), docu
 
 ---
 
-## 🌐 Enlace en Producción
-- **Cloudflare Pages Oficial**: [https://abdulhanif.pages.dev](https://abdulhanif.pages.dev)
+## 🌐 Enlaces en Producción
+- **URL Oficial y Blindada (Vercel)**: [https://abdulhanif.vercel.app](https://abdulhanif.vercel.app) *(Recomendada para el código QR de la taza)*
+- **GitHub Pages (Respaldo)**: [https://musa3101.github.io/recuerdospapa/](https://musa3101.github.io/recuerdospapa/)
+- **Cloudflare Pages**: [https://abdulhanif.pages.dev](https://abdulhanif.pages.dev)

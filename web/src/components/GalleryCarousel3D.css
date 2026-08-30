@@ -100,8 +100,9 @@
   cursor: pointer;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  -webkit-box-reflect: below 12px linear-gradient(transparent, transparent 75%, rgba(0, 0, 0, 0.35));
-  transition: opacity 0.4s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition: opacity 0.3s ease;
 }
 
 /* Photo frame inside each card — provides strict clipping boundary */
@@ -114,7 +115,7 @@
   isolation: isolate;
   background: var(--bg-card);
   border: 2px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.1);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 

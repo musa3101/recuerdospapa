@@ -13,5 +13,13 @@ export default defineConfig({
     outDir: 'dist',
     target: ['es2018', 'safari13'],
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
   },
 });
