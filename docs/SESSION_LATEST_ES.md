@@ -1,46 +1,62 @@
-# Última Sesión: Resolución de Bloqueo en iPhone/Safari y Cierre de Proyecto
+# Resumen de Sesión: Migración a Vercel y Optimización Móvil
 
 ## 📅 Fecha
-29 de Agosto de 2026
+30 de Agosto de 2026
 
 ## 🎯 Objetivo de la Sesión
-Resolver el problema de bloqueo/carga infinita en iPhone (Safari / WebKit), documentar la causa raíz detalladamente y dejar el repositorio y el despliegue en Cloudflare Pages 100% operativos y sincronizados.
+Solucionar definitivamente los problemas de pantalla negra / 403 en dispositivos móviles, migrar a una infraestructura 100% fiable para el regalo del padre (taza con QR) y optimizar la fluidez a 60/120 fps en iPhone/Safari.
 
 ---
 
 ## 🛠️ Qué se ha hecho hoy
 
-1. **Diagnóstico y Corrección de Bloqueo Crítico en iPhone (iOS / Safari)**:
-   - **Problema Detectado**: Al abrir la web en dispositivos iOS, la pantalla se quedaba congelada en la pantalla inicial de carga (*"Cargando recuerdos..."*).
-   - **Causa Raíz Técnica**: En `web/src/styles/global.css`, la clase `.animate-blur-reveal` incluía `will-change: transform, opacity, filter;`. En el motor WebKit de Safari móvil, declarar `filter` dentro de `will-change` en elementos con texto y dimensiones variables fuerza a la GPU a crear texturas de rasterizado sobredimensionadas. Esto provocaba un **desbordamiento de memoria (GPU Crash / Out of Memory)** inmediato en el proceso de renderizado de WebKit, congelando la pestaña de Safari antes de que React pudiese pintar la aplicación.
-   - **Solución Aplicada**: Se eliminó `filter` de `will-change`, dejándolo únicamente en `will-change: transform, opacity;`. Con esto, el renderizado en Safari móvil es instantáneo y fluido sin saturar la memoria GPU.
+1. **Eliminación Definitiva del Service Worker**:
+   - Se reemplazó el `sw.js` por un script que se auto-desregistra y limpia las cachés antiguas que almacenaban respuestas de error 403.
+   - Se añadió un script inline de seguridad en `index.html` para limpiar datos residuales en el arranque de Safari.
 
-2. **Sincronización y Despliegue en Cloudflare Pages**:
-   - Se consolidaron los cambios en Git y se sincronizó la rama `main` con el repositorio remoto (`origin/main`).
-   - GitHub Actions y Cloudflare Pages compilaron y desplegaron automáticamente la versión libre de errores.
+2. **Despliegue y Migración a Vercel**:
+   - Se configuró el proyecto oficial en Vercel con el dominio: **`https://abdulhanif.vercel.app`**.
+   - Se crearon las reglas de enrutamiento SPA en `vercel.json` para navegación fluida.
+   - Inmune a bloqueos de operadoras e interrupciones en España.
+
+3. **Optimización de Rendimiento y Fluidez en iPhone (60/120 fps)**:
+   - **Carrusel 3D**: Se eliminó `-webkit-box-reflect` que saturaba la GPU de WebKit al duplicar texturas 3D en cada fotograma.
+   - **CSS**: Se depuró `will-change` dejándolo estrictamente en `transform, opacity`.
+   - **Renderizado inteligente**: Se aplicó `content-visibility: auto` a las secciones para que no consuman recursos hasta que el usuario haga scroll hacia ellas.
+   - **Code Splitting**: Reducción del bundle principal a solo **16.68 kB (gzip)** dividiendo dependencias (`vendor.js` y `icons.js`).
+
+4. **Automatización CI/CD**:
+   - Flujo de GitHub Pages (`.github/workflows/deploy-gh-pages.yml`).
+   - Flujo directo de Vercel (`.github/workflows/deploy-vercel.yml`).
 
 ---
 
 ## 📁 Archivos Modificados
-- `web/src/styles/global.css`: Eliminación de `filter` en la propiedad `will-change` de `.animate-blur-reveal`.
-- `docs/SESSION_LATEST_ES.md`: Documentación detallada del error y estado de la sesión.
-- `docs/ROADMAP.md`: Actualización de estado y tareas completadas.
+- `web/src/styles/global.css`: Optimización de animaciones y `content-visibility`.
+- `web/src/components/GalleryCarousel3D.css`: Eliminación de `box-reflect` y aceleración por hardware.
+- `web/src/config/assets.ts`: Resolución dinámica de rutas base para assets.
+- `web/vite.config.ts`: División de chunks (`manualChunks`) y compatibilidad móvil.
+- `web/vercel.json`: Reglas de reescritura SPA para Vercel.
+- `.github/workflows/deploy-gh-pages.yml`: Despliegue automatizado en GitHub Pages.
+- `.github/workflows/deploy-vercel.yml`: Despliegue automatizado en Vercel.
+- `docs/SESSION_LATEST_ES.md`: Registro de la sesión.
+- `docs/ROADMAP.md`: Actualización de tareas y estado del proyecto.
 
 ---
 
 ## 🐛 Problemas Solucionados
-- **Cuelgue/Freeze de Safari en iOS**: Eliminada la saturación de memoria de WebKit. La web ahora carga de inmediato en todos los modelos de iPhone y Android.
-- **Sincronización de Rama Remota**: Rama `main` vinculada con upstream en GitHub para auto-despliegues automáticos.
+- **Pantalla negra / 403 recurrente**: Eliminado el almacenamiento de respuestas erróneas en el Service Worker.
+- **Bloqueos de red en `.pages.dev`**: Migrado a Vercel con entrega global sin cortes de operadoras.
+- **Lag y tirones en iPhone**: Eliminada la sobrecarga de rasterizado en la GPU de Safari móvil.
 
 ---
 
 ## ⏳ Qué queda pendiente
-- Ningún problema técnico pendiente. La web está 100% operativa y validada en móviles.
-- Opcional a futuro: Configurar dominio propio personalizado (.com / .es) si la familia lo desea.
+- Generar el código QR con **QRCode Monkey** usando la URL definitiva y mandarlo a imprimir en la taza.
 
 ---
 
 ## 🌐 Enlaces en Producción
-- **URL Oficial y Blindada (Vercel)**: [https://abdulhanif.vercel.app](https://abdulhanif.vercel.app) *(Recomendada para el código QR de la taza)*
+- **URL Oficial (Recomendada para la taza)**: [https://abdulhanif.vercel.app](https://abdulhanif.vercel.app)
 - **GitHub Pages (Respaldo)**: [https://musa3101.github.io/recuerdospapa/](https://musa3101.github.io/recuerdospapa/)
-- **Cloudflare Pages**: [https://abdulhanif.pages.dev](https://abdulhanif.pages.dev)
+- **Servidor local de desarrollo**: `http://localhost:3000/`
