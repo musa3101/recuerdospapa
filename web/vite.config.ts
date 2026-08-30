@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
+  base: process.env.GITHUB_PAGES ? '/recuerdospapa/' : '/',
   plugins: [react()],
   server: {
     port: 3000,
@@ -11,7 +11,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    target: 'es2020',
+    target: ['es2018', 'safari13'],
     sourcemap: false,
   },
 });

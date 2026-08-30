@@ -642,7 +642,7 @@ export const ASSETS: AssetsConfig = {
 };
 
 /**
- * Helper to resolve the correct URL whether using local files or Cloudflare R2
+ * Helper to resolve the correct URL whether using local files, GitHub Pages, or Cloudflare R2
  */
 export function resolveAssetUrl(pathOrKey: string): string {
   if (!pathOrKey) return '';
@@ -653,7 +653,10 @@ export function resolveAssetUrl(pathOrKey: string): string {
     const cleanKey = pathOrKey.replace(/^\/+/, '').replace(/^assets\//, '');
     return `${ASSETS.r2BaseUrl.replace(/\/+$/, '')}/${cleanKey}`;
   }
-  return pathOrKey;
+  const rawBase = (import.meta as any).env?.BASE_URL || '/';
+  const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+  const cleanPath = pathOrKey.startsWith('/') ? pathOrKey : `/${pathOrKey}`;
+  return base ? `${base}${cleanPath}` : cleanPath;
 }
 
 /**
